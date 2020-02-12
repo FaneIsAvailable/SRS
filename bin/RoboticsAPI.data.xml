@@ -13,7 +13,7 @@
             <additionalInformation>
                 <info key="ID" type="java.lang.String" value="02078d23-a0ca-4b5b-9e39-4496c081c09b"/>
             </additionalInformation>
-            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="0.0" cogY="0.0" cogZ="0.0" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="0.0"/>
+            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="18.64928384503713" cogY="18.999035563162455" cogZ="41.76731940760582" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="0.3940033774933679"/>
         </toolTemplate>
     </objectTemplates>
     <processDataContainer>
