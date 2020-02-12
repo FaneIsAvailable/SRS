@@ -3,6 +3,19 @@
     <world>
         <gravitation x="0.0" y="0.0" z="9.81"/>
     </world>
+    <objectTemplates>
+        <toolTemplate class="" name="DaNeedle">
+            <frames>
+                <frame id="_a93b5a7a-d98b-4a07-ba44-e10362037615" name="DaTCP">
+                    <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+                </frame>
+            </frames>
+            <additionalInformation>
+                <info key="ID" type="java.lang.String" value="02078d23-a0ca-4b5b-9e39-4496c081c09b"/>
+            </additionalInformation>
+            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="0.0" cogY="0.0" cogZ="0.0" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="0.0"/>
+        </toolTemplate>
+    </objectTemplates>
     <processDataContainer>
         <processData dataType="java.lang.String" defaultValue="iiwa" displayName="Robot Name" editableOnHmi="true" id="robot_name" value="iiwa"/>
         <processData dataType="java.lang.String" defaultValue="172.31.1.150" displayName="ROS Master IP" editableOnHmi="true" id="master_ip" value="172.31.1.150"/>
