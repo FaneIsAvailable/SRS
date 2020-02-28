@@ -3,22 +3,52 @@
     <world>
         <gravitation x="0.0" y="0.0" z="9.81"/>
         <frame id="_5a80420c-9bb3-451c-8475-0d19a1dd7ebf" name="Insertion">
-            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <transformation a="-0.06500338016082774" b="-1.5525860988765394" c="-3.071367167514644" x="344.86638214336534" y="-662.7095880079157" z="183.68315961128718"/>
             <additionalInformation>
-                <info key="LastModificationTime" type="java.lang.Long" value="1582890015962"/>
+                <info key="LastModificationTime" type="java.lang.Long" value="1582896005794"/>
+                <info base="LBR_iiwa_7_R800_1" controller="KUKA_Sunrise_Cabinet_1" device="LBR_iiwa_7_R800_1" tcpName="DaNeedle/DaTCP" tool="DaNeedle" type="com.kuka.roboticsAPI.deviceModel.TeachInformation">
+                    <tcpTransformation a="0.0" b="0.0" c="0.0" x="8.120509427745763" y="9.495065439474597" z="348.3397934830038"/>
+                </info>
             </additionalInformation>
+            <redundancyData>
+                <redundancy transformationProviderName="KUKA_Sunrise_Cabinet_1/LBR_iiwa_7_R800_1" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy">
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$StatusParameter" value="2" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$TurnParameter" value="13" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy$E1Parameter" value="-1.2703269877562477E-5" valueType="java.lang.Double"/>
+                </redundancy>
+            </redundancyData>
         </frame>
         <frame id="_d24696d5-12e7-4881-8ddd-1e9809ecd9f5" name="Target">
-            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <transformation a="-0.06552510863876287" b="-1.552518737185002" c="-3.0710051103703666" x="533.7310931211977" y="-661.8213151595561" z="180.2367860515319"/>
             <additionalInformation>
-                <info key="LastModificationTime" type="java.lang.Long" value="1582890070687"/>
+                <info key="LastModificationTime" type="java.lang.Long" value="1582896105212"/>
+                <info base="LBR_iiwa_7_R800_1" controller="KUKA_Sunrise_Cabinet_1" device="LBR_iiwa_7_R800_1" tcpName="DaNeedle/DaTCP" tool="DaNeedle" type="com.kuka.roboticsAPI.deviceModel.TeachInformation">
+                    <tcpTransformation a="0.0" b="0.0" c="0.0" x="8.120509427745763" y="9.495065439474597" z="348.3397934830038"/>
+                </info>
             </additionalInformation>
+            <redundancyData>
+                <redundancy transformationProviderName="KUKA_Sunrise_Cabinet_1/LBR_iiwa_7_R800_1" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy">
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$StatusParameter" value="2" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$TurnParameter" value="13" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy$E1Parameter" value="-3.1338695716497186E-5" valueType="java.lang.Double"/>
+                </redundancy>
+            </redundancyData>
         </frame>
         <frame id="_f9fdf056-5e7d-415c-8a56-33111b5672cf" name="preinsertion">
-            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <transformation a="-0.06718886100896153" b="-1.5526622771152978" c="-3.069002545957805" x="206.2365535884373" y="-663.3895741969545" z="186.2373632292593"/>
             <additionalInformation>
-                <info key="LastModificationTime" type="java.lang.Long" value="1582890095481"/>
+                <info key="LastModificationTime" type="java.lang.Long" value="1582895931108"/>
+                <info base="LBR_iiwa_7_R800_1" controller="KUKA_Sunrise_Cabinet_1" device="LBR_iiwa_7_R800_1" tcpName="DaNeedle/DaTCP" tool="DaNeedle" type="com.kuka.roboticsAPI.deviceModel.TeachInformation">
+                    <tcpTransformation a="0.0" b="0.0" c="0.0" x="8.120509427745763" y="9.495065439474597" z="348.3397934830038"/>
+                </info>
             </additionalInformation>
+            <redundancyData>
+                <redundancy transformationProviderName="KUKA_Sunrise_Cabinet_1/LBR_iiwa_7_R800_1" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy">
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$StatusParameter" value="2" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$TurnParameter" value="9" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy$E1Parameter" value="4.61388696072526E-6" valueType="java.lang.Double"/>
+                </redundancy>
+            </redundancyData>
         </frame>
     </world>
     <objectTemplates>
