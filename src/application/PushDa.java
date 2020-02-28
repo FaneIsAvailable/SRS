@@ -62,7 +62,7 @@ public class PushDa extends RoboticsAPIApplication {
 		do
 		{
 		result=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION, "Please select", 
-					"Exit", "Move Preinsertion","Move insertion", "Move target", "Extract");
+					"Exit", "Move Preinsertion","Move insertion", "Move target", "Extract","zeceee");
 
 		switch (result) {
 		case 0:
@@ -84,6 +84,10 @@ public class PushDa extends RoboticsAPIApplication {
 			getLogger().info("extract");
 			extract();
 			break;
+		case 5:
+			getLogger().info("fdddd");
+			zece();
+			break;
 		default:
 			getLogger().info("Nothing Selected");
 			break;
@@ -92,6 +96,18 @@ public class PushDa extends RoboticsAPIApplication {
 		}while (0!=result);
 		
 		
+	}
+
+	private void zece() {
+		// TODO Auto-generated method stub
+	for (int i=0;i<=10;i++){
+	
+		getLogger().info(""+i);
+		getLogger().info("target");
+		tcpAc.move(lin(getApplicationData().getFrame("/Target")));
+		getLogger().info("ins/extract");
+		tcpAc.move(lin(getApplicationData().getFrame("/Insertion")));
+	}
 	}
 
 	private void extract() {
