@@ -97,27 +97,27 @@ public class PushDa extends RoboticsAPIApplication {
 	private void extract() {
 		// TODO Auto-generated method stub
 		getLogger().info("ins/extract");
-		acu.move(lin(getApplicationData().getFrame("/Insertion")));
+		tcpAc.move(lin(getApplicationData().getFrame("/Insertion")));
 	}
 
 	private void movetarg() {
 		// TODO Auto-generated method stub
 		getLogger().info("target");
-		acu.move(lin(getApplicationData().getFrame("/Target")));
+		tcpAc.move(lin(getApplicationData().getFrame("/Target")));
 		
 	}
 
 	private void moveins() {
 		// TODO Auto-generated method stub
 		getLogger().info("ins");
-		acu.move(lin(getApplicationData().getFrame("/Insertion")));
+		tcpAc.move(lin(getApplicationData().getFrame("/Insertion")));
 		
 	}
 
 	private void movepreins() {
 		// TODO Auto-generated method stub
 		getLogger().info("preins");
-		acu.move(ptp(getApplicationData().getFrame("/preinsertion")));
+		tcpAc.move(ptp(getApplicationData().getFrame("/preinsertion")));
 		
 	}
 }
