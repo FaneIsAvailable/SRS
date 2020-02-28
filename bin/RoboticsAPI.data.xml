@@ -2,6 +2,24 @@
 <RoboticsAPIData version="3">
     <world>
         <gravitation x="0.0" y="0.0" z="9.81"/>
+        <frame id="_5a80420c-9bb3-451c-8475-0d19a1dd7ebf" name="Insertion">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1582890015962"/>
+            </additionalInformation>
+        </frame>
+        <frame id="_d24696d5-12e7-4881-8ddd-1e9809ecd9f5" name="Target">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1582890070687"/>
+            </additionalInformation>
+        </frame>
+        <frame id="_f9fdf056-5e7d-415c-8a56-33111b5672cf" name="preinsertion">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1582890095481"/>
+            </additionalInformation>
+        </frame>
     </world>
     <objectTemplates>
         <toolTemplate class="" name="DaNeedle">
