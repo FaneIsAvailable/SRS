@@ -117,6 +117,7 @@ public class PushDa extends RoboticsAPIApplication {
 	private void movepreins() {
 		// TODO Auto-generated method stub
 		getLogger().info("preins");
+		tcpAc.move(ptp(getApplicationData().getFrame("/preinsertion1")));
 		tcpAc.move(ptp(getApplicationData().getFrame("/preinsertion")));
 		
 	}
