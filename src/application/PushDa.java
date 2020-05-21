@@ -63,9 +63,9 @@ public class PushDa extends RoboticsAPIApplication {
 		tcpAc=acu.getFrame("DaTCP");
 		acu.attachTo(myLBR.getFlange());
 		rr= new Robo_3f(myController);
-		rr.deactivate();
-		ThreadUtil.milliSleep(1000);
-		rr.activate();
+		//rr.deactivate();
+		//ThreadUtil.milliSleep(1000);
+		//rr.activate();
 		
       
 	}
