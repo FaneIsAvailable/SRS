@@ -69,6 +69,7 @@ public class PushDa extends RoboticsAPIApplication {
 		getLogger().info("Starting BlueGear");
 		getLogger().info("grip");	
 		rr.close_full();
+		getLogger().info("ddd");	
 		
 		
 	}
