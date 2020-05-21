@@ -39,9 +39,9 @@ public class Robo_3f extends Robotiq3FIOGroup {
 	//************************************************** 
 	public void close_full(){
 		
-		this.setSpeed_A(100);
-		this.setSpeed_B(100);
-		this.setSpeed_C(100);
+		this.setSpeed_A(255);
+		this.setSpeed_B(255);
+		this.setSpeed_C(255);
 		this.setPos_req_A(255);
 		this.setPos_req_B(255);
 		this.setPos_req_C(255);
@@ -52,9 +52,9 @@ public class Robo_3f extends Robotiq3FIOGroup {
 	public void open_full()
 	{
 		
-		this.setSpeed_A(100);
-		this.setSpeed_B(100);
-		this.setSpeed_C(100);
+		this.setSpeed_A(255);
+		this.setSpeed_B(255);
+		this.setSpeed_C(255);
 		this.setPos_req_A(0);
 		this.setPos_req_B(0);
 		this.setPos_req_C(0);
