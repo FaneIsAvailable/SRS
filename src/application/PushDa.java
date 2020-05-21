@@ -62,7 +62,7 @@ public class PushDa extends RoboticsAPIApplication {
 		myLBR.move(ptpHome());
 		int result=0;
 		getLogger().info("Starting BlueGear");
-		robo.setAct_req(1);
+		robo.setAct_req(0);
 
 		
 	}
