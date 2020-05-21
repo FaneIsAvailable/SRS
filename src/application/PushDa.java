@@ -68,6 +68,7 @@ public class PushDa extends RoboticsAPIApplication {
 		rr.deactivate();
 		ThreadUtil.milliSleep(1000);
 		rr.activate();
+		rr.close_full();
 
 		
 	}
