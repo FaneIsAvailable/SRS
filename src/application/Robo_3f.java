@@ -34,25 +34,30 @@ public class Robo_3f extends Robotiq3FIOGroup {
 	//************************************************** 
 	public void activate() {
 		System.out.println("Activating Gripper..."); 
-		this.setAct_req(1);//"ActionRequest" byte <-- ‭‭0000 0001 : rACT bit = 1‬
+		this.setAct_req(9);//"ActionRequest" byte <-- ‭‭0000 0001 : rACT bit = 1‬
 	}
 	//************************************************** 
 	public void close_full(){
-		//this.setPos_req_A(255);
-		//this.setPos_req_B(255);
-		/*this.setSpeed_A(10);
+		
+		this.setSpeed_A(10);
 		this.setSpeed_B(10);
 		this.setSpeed_C(10);
-				this.setPos_req_A(200);
+		this.setPos_req_A(200);
 		this.setPos_req_B(200);
-		this.setPos_req_C(200);*/
+		this.setPos_req_C(200);
 		//this.setPos_req_scissor(250);
-		this.setAct_req(9);
+		//this.setAct_req(9);
 	
 	}
 	public void open_full()
 	{
-		this.setAct_req(11);
+		
+		this.setSpeed_A(10);
+		this.setSpeed_B(10);
+		this.setSpeed_C(10);
+		this.setPos_req_A(0);
+		this.setPos_req_B(0);
+		this.setPos_req_C(0);
 	}
 
 }
