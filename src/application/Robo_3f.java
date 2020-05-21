@@ -41,7 +41,7 @@ public class Robo_3f extends Robotiq3FIOGroup {
 		this.setForce_A(50);
 		this.setForce_B(50);
 		this.setForce_C(50);
-		this.setPos_req_scissor(50);
+		this.setPos_req_A(200);
 
 	}
 
