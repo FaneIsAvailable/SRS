@@ -1,6 +1,8 @@
 package application;
 
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
 import com.kuka.common.ThreadUtil;
@@ -87,8 +89,9 @@ public class PushDa extends RoboticsAPIApplication {
 		cmode=new CartesianImpedanceControlMode();
 		cmode.parametrize(CartDOF.Z).setStiffness(3000);
 		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(500);
-				myLBR.move(lin(getApplicationData().getFrame("/Ridicare_impedance")).setMode(cmode));
-		getLogger().info("ddd");	
+				//myLBR.move(lin(getApplicationData().getFrame("/Ridicare_impedance")).setMode(cmode));
+		getLogger().info("ddd");
+		myLBR.move(positionHold(cmode, 25, TimeUnit.SECONDS));
 		
 		
 	}
