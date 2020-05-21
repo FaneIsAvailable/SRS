@@ -2,6 +2,8 @@ package application;
 
 
 import javax.inject.Inject;
+
+import com.kuka.generated.ioAccess.Robotiq3FIOGroup;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
@@ -38,6 +40,7 @@ public class PushDa extends RoboticsAPIApplication {
 	private ObjectFrame myWorld;
 	private Tool acu;
 	private ObjectFrame tcpAc;
+	private Robotiq3FIOGroup robo;
 
 	@Override
 	public void initialize() {
@@ -49,7 +52,7 @@ public class PushDa extends RoboticsAPIApplication {
 		acu=getApplicationData().createFromTemplate("DaNeedle");
 		tcpAc=acu.getFrame("DaTCP");
 		acu.attachTo(myLBR.getFlange());
-
+	
 
 	}
 
@@ -59,42 +62,8 @@ public class PushDa extends RoboticsAPIApplication {
 		myLBR.move(ptpHome());
 		int result=0;
 		getLogger().info("Starting BlueGear");
-		do
-		{
-		result=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION, "Please select", 
-					"Exit", "Move Preinsertion","Move insertion", "Move target", "Extract","zeceee");
+		robo.setAct_req(1);
 
-		switch (result) {
-		case 0:
-			getLogger().info("Exiting");
-			break;
-		case 1:
-			getLogger().info("Move pre_insert");
-			movepreins();
-			break;
-		case 2:
-			getLogger().info("Move insert");
-			moveins();
-			break;
-		case 3:
-			getLogger().info("move target");
-			movetarg();
-			break;
-		case 4:
-			getLogger().info("extract");
-			extract();
-			break;
-		case 5:
-			getLogger().info("fdddd");
-			zece();
-			break;
-		default:
-			getLogger().info("Nothing Selected");
-			break;
-		}
-
-		}while (0!=result);
-		
 		
 	}
 
