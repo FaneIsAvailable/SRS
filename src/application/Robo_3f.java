@@ -38,8 +38,8 @@ public class Robo_3f extends Robotiq3FIOGroup {
 	}
 	//************************************************** 
 	public void close_full(){
-		this.setPos_req_A(100);
-		this.setPos_req_B(50);
+		this.setPos_req_A(255);
+		this.setPos_req_B(255);
 		this.setAct_req(9);
 	
 	}
