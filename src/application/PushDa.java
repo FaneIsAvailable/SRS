@@ -86,7 +86,7 @@ public class PushDa extends RoboticsAPIApplication {
 		myLBR.move(ptp(getApplicationData().getFrame("/Ridicare_impedance")));
 		cmode=new CartesianImpedanceControlMode();
 		cmode.parametrize(CartDOF.Z).setStiffness(3000);
-		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(100);
+		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(500);
 				myLBR.move(lin(getApplicationData().getFrame("/Ridicare_impedance")).setMode(cmode));
 		getLogger().info("ddd");	
 		
