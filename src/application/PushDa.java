@@ -3,6 +3,7 @@ package application;
 
 import javax.inject.Inject;
 
+import com.kuka.common.ThreadUtil;
 import com.kuka.generated.ioAccess.Robotiq3FIOGroup;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
@@ -41,7 +42,8 @@ public class PushDa extends RoboticsAPIApplication {
 	private Tool acu;
 	private ObjectFrame tcpAc;
 	private Robotiq3FIOGroup robo;
-
+	private Robo_3f rr;
+	
 	@Override
 	public void initialize() {
 		// initialize your application here
@@ -52,7 +54,7 @@ public class PushDa extends RoboticsAPIApplication {
 		acu=getApplicationData().createFromTemplate("DaNeedle");
 		tcpAc=acu.getFrame("DaTCP");
 		acu.attachTo(myLBR.getFlange());
-		
+		rr= new Robo_3f(myController);
 	
 
 	}
@@ -63,7 +65,9 @@ public class PushDa extends RoboticsAPIApplication {
 		myLBR.move(ptpHome());
 		int result=0;
 		getLogger().info("Starting BlueGear");
-		robo.setAct_req(0);
+		rr.deactivate();
+		ThreadUtil.milliSleep(1000);
+		rr.activate();
 
 		
 	}
