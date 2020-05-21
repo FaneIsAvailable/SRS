@@ -55,7 +55,9 @@ public class PushDa extends RoboticsAPIApplication {
 		tcpAc=acu.getFrame("DaTCP");
 		acu.attachTo(myLBR.getFlange());
 		rr= new Robo_3f(myController);
-	
+		rr.deactivate();
+		ThreadUtil.milliSleep(1000);
+		rr.activate();
 
 	}
 
@@ -65,11 +67,9 @@ public class PushDa extends RoboticsAPIApplication {
 		myLBR.move(ptpHome());
 		int result=0;
 		getLogger().info("Starting BlueGear");
-		rr.deactivate();
-		ThreadUtil.milliSleep(1000);
-		rr.activate();
+		getLogger().info("grip");	
 		rr.close_full();
-
+		
 		
 	}
 
