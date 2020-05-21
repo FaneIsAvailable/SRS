@@ -51,7 +51,7 @@ public class PushDa extends RoboticsAPIApplication {
 	private Robotiq3FIOGroup robo;
 	private Robo_3f rr;
 	private CartesianImpedanceControlMode cmode;    
-	IUserKey gripperDoubleKey;
+	
 	@Override
 	public void initialize() {
 		// initialize your application here
@@ -68,27 +68,7 @@ public class PushDa extends RoboticsAPIApplication {
 		rr.activate();
 		
       
-       IUserKeyBar gripperKeyBar =  getApplicationUI().createUserKeyBar("RobotiqGripper");
-       IUserKeyListener gripperListener = new IUserKeyListener(){ 
-			@Override 
-			public void onKeyEvent(IUserKey key, UserKeyEvent event) 
-			{	 
-				
-				if(event == UserKeyEvent.FirstKeyDown){ 
-					
-				
-					rr.open_full();
-				}
-								
-			}
-		};
-		gripperDoubleKey = gripperKeyBar.addDoubleUserKey(0,gripperListener, false); 
-		gripperDoubleKey.setText(UserKeyAlignment.TopMiddle, "Open");
-		gripperDoubleKey.setText(UserKeyAlignment.Middle,"val");
-		gripperDoubleKey.setText(UserKeyAlignment.BottomMiddle, "Close"); 
-		gripperKeyBar.publish();  
 	}
-
 	@Override
 	public void run() {
 		// your application execution starts here
