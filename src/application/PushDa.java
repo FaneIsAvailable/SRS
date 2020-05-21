@@ -10,10 +10,17 @@ import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
 import com.kuka.roboticsAPI.controllerModel.Controller;
 import com.kuka.roboticsAPI.deviceModel.LBR;
+import com.kuka.roboticsAPI.geometricModel.CartDOF;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
 import com.kuka.roboticsAPI.geometricModel.World;
+import com.kuka.roboticsAPI.motionModel.controlModeModel.CartesianImpedanceControlMode;
 import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
+import com.kuka.roboticsAPI.uiModel.userKeys.IUserKey;
+import com.kuka.roboticsAPI.uiModel.userKeys.IUserKeyBar;
+import com.kuka.roboticsAPI.uiModel.userKeys.IUserKeyListener;
+import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyAlignment;
+import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyEvent;
 
 /**
  * Implementation of a robot application.
@@ -43,7 +50,8 @@ public class PushDa extends RoboticsAPIApplication {
 	private ObjectFrame tcpAc;
 	private Robotiq3FIOGroup robo;
 	private Robo_3f rr;
-	
+	private CartesianImpedanceControlMode cmode;    
+	IUserKey gripperDoubleKey;
 	@Override
 	public void initialize() {
 		// initialize your application here
@@ -58,7 +66,26 @@ public class PushDa extends RoboticsAPIApplication {
 		rr.deactivate();
 		ThreadUtil.milliSleep(1000);
 		rr.activate();
-
+		cmode=new CartesianImpedanceControlMode();
+       cmode.parametrize(CartDOF.ALL).setStiffness(1500);
+       IUserKeyBar gripperKeyBar =  getApplicationUI().createUserKeyBar("RobotiqGripper");
+       IUserKeyListener gripperListener = new IUserKeyListener(){ 
+			@Override 
+			public void onKeyEvent(IUserKey key, UserKeyEvent event) 
+			{	 
+				
+				if(event == UserKeyEvent.FirstKeyDown){ 
+					
+				
+					rr.open_full();
+				}
+								
+			}
+		};
+		gripperDoubleKey = gripperKeyBar.addDoubleUserKey(0,gripperListener, false); 
+		gripperDoubleKey.setText(UserKeyAlignment.TopMiddle, "Open");
+		gripperDoubleKey.setText(UserKeyAlignment.Middle,"val");
+		gripperDoubleKey.setText(UserKeyAlignment.BottomMiddle, "Close"); 
 	}
 
 	@Override
@@ -68,50 +95,16 @@ public class PushDa extends RoboticsAPIApplication {
 		int result=0;
 		getLogger().info("Starting BlueGear");
 		getLogger().info("grip");	
-		myLBR.move(ptp(getApplicationData().getFrame("/preinsertion")));
+		myLBR.move(ptp(getApplicationData().getFrame("/Langa_deasupra")));
+		myLBR.move(lin(getApplicationData().getFrame("/Langa_jos")));
+		myLBR.move(lin(getApplicationData().getFrame("/Prindere")));
 		rr.close_full();
+		myLBR.move(lin(getApplicationData().getFrame("/Ridicare_1")));
+		myLBR.move(ptp(getApplicationData().getFrame("/Ridicare_impedance")));
+		myLBR.move(lin(getApplicationData().getFrame("/Ridicare_impedance")).setMode(cmode));
 		getLogger().info("ddd");	
 		
 		
 	}
-
-	private void zece() {
-		// TODO Auto-generated method stub
-	for (int i=0;i<=10;i++){
-	
-		getLogger().info(""+i);
-		getLogger().info("target");
-		tcpAc.move(lin(getApplicationData().getFrame("/Target")));
-		getLogger().info("ins/extract");
-		tcpAc.move(lin(getApplicationData().getFrame("/Insertion")));
-	}
-	}
-
-	private void extract() {
-		// TODO Auto-generated method stub
-		getLogger().info("ins/extract");
-		tcpAc.move(lin(getApplicationData().getFrame("/Insertion")));
-	}
-
-	private void movetarg() {
-		// TODO Auto-generated method stub
-		getLogger().info("target");
-		tcpAc.move(lin(getApplicationData().getFrame("/Target")));
 		
-	}
-
-	private void moveins() {
-		// TODO Auto-generated method stub
-		getLogger().info("ins");
-		tcpAc.move(lin(getApplicationData().getFrame("/Insertion")));
-		
-	}
-
-	private void movepreins() {
-		// TODO Auto-generated method stub
-		getLogger().info("preins");
-		tcpAc.move(ptp(getApplicationData().getFrame("/preinsertion1")));
-		tcpAc.move(ptp(getApplicationData().getFrame("/preinsertion")));
-		
-	}
 }
