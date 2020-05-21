@@ -81,7 +81,7 @@ public class PushDa extends RoboticsAPIApplication {
 		myLBR.move(lin(getApplicationData().getFrame("/Prindere")));
 		
 		rr.close_full();
-		ThreadUtil.milliSleep(10000);
+		ThreadUtil.milliSleep(5000);
 		myLBR.move(lin(getApplicationData().getFrame("/Ridicare_1")));
 		myLBR.move(ptp(getApplicationData().getFrame("/Ridicare_impedance")));
 		cmode=new CartesianImpedanceControlMode();
