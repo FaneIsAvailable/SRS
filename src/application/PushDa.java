@@ -67,7 +67,7 @@ public class PushDa extends RoboticsAPIApplication {
 		ThreadUtil.milliSleep(1000);
 		rr.activate();
 		cmode=new CartesianImpedanceControlMode();
-       cmode.parametrize(CartDOF.ALL).setStiffness(1500);
+      
        IUserKeyBar gripperKeyBar =  getApplicationUI().createUserKeyBar("RobotiqGripper");
        IUserKeyListener gripperListener = new IUserKeyListener(){ 
 			@Override 
@@ -86,6 +86,7 @@ public class PushDa extends RoboticsAPIApplication {
 		gripperDoubleKey.setText(UserKeyAlignment.TopMiddle, "Open");
 		gripperDoubleKey.setText(UserKeyAlignment.Middle,"val");
 		gripperDoubleKey.setText(UserKeyAlignment.BottomMiddle, "Close"); 
+		gripperKeyBar.publish();  
 	}
 
 	@Override
@@ -101,6 +102,7 @@ public class PushDa extends RoboticsAPIApplication {
 		rr.close_full();
 		myLBR.move(lin(getApplicationData().getFrame("/Ridicare_1")));
 		myLBR.move(ptp(getApplicationData().getFrame("/Ridicare_impedance")));
+		cmode.parametrize(CartDOF.ALL).setStiffness(1500);
 		myLBR.move(lin(getApplicationData().getFrame("/Ridicare_impedance")).setMode(cmode));
 		getLogger().info("ddd");	
 		
