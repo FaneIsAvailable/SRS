@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IOManager xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Version Label="">
+    <Info Version="IOManager V0.1.0" />
+    <Schema Version="1" />
+  </Version>
+  <WarnMultipleUsageOfInputs printWarning="false" />
+  <BusList>
+    <Bus BusDriverName="ECatIODriver" BusInstanceName="SYS-X44">
+      <IOList>
+        <DigitalIO Name="Robotiq3F.Act_req" Type="OUTPUT" Scope="USER_IO" StartBit="12576" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Gripper_opt" Type="OUTPUT" Scope="USER_IO" StartBit="12584" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Gripper_opt_2" Type="OUTPUT" Scope="USER_IO" StartBit="12592" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_A" Type="OUTPUT" Scope="USER_IO" StartBit="12600" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Speed_A" Type="OUTPUT" Scope="USER_IO" StartBit="12608" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Force_A" Type="OUTPUT" Scope="USER_IO" StartBit="12616" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_B" Type="OUTPUT" Scope="USER_IO" StartBit="12624" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Speed_B" Type="OUTPUT" Scope="USER_IO" StartBit="12632" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Force_B" Type="OUTPUT" Scope="USER_IO" StartBit="12640" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_C" Type="OUTPUT" Scope="USER_IO" StartBit="12648" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Speed_C" Type="OUTPUT" Scope="USER_IO" StartBit="12656" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Force_C" Type="OUTPUT" Scope="USER_IO" StartBit="12664" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_scissor" Type="OUTPUT" Scope="USER_IO" StartBit="12672" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Speed_Scissor" Type="OUTPUT" Scope="USER_IO" StartBit="12680" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Force_scissor" Type="OUTPUT" Scope="USER_IO" StartBit="12688" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Gripper_status" Type="INPUT" Scope="USER_IO" StartBit="432" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Obj_detect" Type="INPUT" Scope="USER_IO" StartBit="440" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Fault_state" Type="INPUT" Scope="USER_IO" StartBit="448" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_echo_A" Type="INPUT" Scope="USER_IO" StartBit="456" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_A" Type="INPUT" Scope="USER_IO" StartBit="464" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Cur_A" Type="INPUT" Scope="USER_IO" StartBit="472" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_echo_B" Type="INPUT" Scope="USER_IO" StartBit="480" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_B" Type="INPUT" Scope="USER_IO" StartBit="488" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Cur_B" Type="INPUT" Scope="USER_IO" StartBit="496" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_echo_C" Type="INPUT" Scope="USER_IO" StartBit="504" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_C" Type="INPUT" Scope="USER_IO" StartBit="512" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Cur_C" Type="INPUT" Scope="USER_IO" StartBit="520" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_req_echo_scissor" Type="INPUT" Scope="USER_IO" StartBit="528" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Pos_scissor" Type="INPUT" Scope="USER_IO" StartBit="536" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+        <DigitalIO Name="Robotiq3F.Cur_scissor" Type="INPUT" Scope="USER_IO" StartBit="544" BitSize="8" Signed="false">
+          <Description />
+        </DigitalIO>
+      </IOList>
+    </Bus>
+  </BusList>
+</IOManager>
