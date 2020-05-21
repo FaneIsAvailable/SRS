@@ -52,7 +52,7 @@ public class Robo_3f extends Robotiq3FIOGroup {
 	}
 	public void open_full()
 	{
-		this.setAct_req(1);
+		this.setAct_req(11);
 	}
 
 }
