@@ -45,6 +45,7 @@ public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 		force = getApplicationData().getProcessData("gripperForce").getValue();   
 		positionRequest = robotiqGripper.getPos_scissor();
 		positionRequestEcho = positionRequest;
+	robotiqGripper.activate();
 		// ===================================================================================================
 		// ==================== GripperBar configuration =======================================================
 		// ===================================================================================================
