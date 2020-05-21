@@ -36,6 +36,7 @@ public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 	// *********************************************************************************************************	 
 	@Override
 	public void initialize() {
+		robotiqGripper.activate();
 		// initialize your task here
 		initializeCyclic(0, 5, TimeUnit.MILLISECONDS,CycleBehavior.BestEffort);
 		controller = (Controller) getContext().getControllers().toArray()[0]; 
@@ -45,7 +46,7 @@ public class RobotiqGripperKeys extends RoboticsAPICyclicBackgroundTask {
 		force = getApplicationData().getProcessData("gripperForce").getValue();   
 		positionRequest = robotiqGripper.getPos_scissor();
 		positionRequestEcho = positionRequest;
-	robotiqGripper.activate();
+	
 		// ===================================================================================================
 		// ==================== GripperBar configuration =======================================================
 		// ===================================================================================================
