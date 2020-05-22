@@ -102,13 +102,13 @@ public class RunAway extends RoboticsAPIApplication {
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		IMotionContainer mc= lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")).breakWhen(forta_Z));
+		IMotionContainer mc= lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")));
 		getLogger().info("Forta:"+lBR_iiwa_7_R800_1.getExternalForceTorque(tcpAc, myWorld).getForce().getZ());
-		 if (mc.hasFired(forta_Z)){
+		 /*if (mc.hasFired(forta_Z)){
 			 getLogger().info("gata:nuu");
 			 tcpAc.move(linRel(0,0,50));
 			 getLogger().info("gata:");
-			 }
+			 }*/
 	
 	}
 	
