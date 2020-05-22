@@ -14,6 +14,7 @@ import com.kuka.roboticsAPI.controllerModel.Controller;
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.deviceModel.PositionInformation;
 import com.kuka.roboticsAPI.executionModel.IFiredTriggerInfo;
+import com.kuka.roboticsAPI.geometricModel.CartDOF;
 import com.kuka.roboticsAPI.geometricModel.Frame;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
@@ -66,6 +67,8 @@ public class RunAway extends RoboticsAPIApplication {
 		acu.attachTo(myLBR.getFlange());
 		rr= new Robo_3f(myController);
 		rr.close_full();
+		cmode.parametrize(CartDOF.Z).setStiffness(1000);
+		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(1000);
 	}
 
 	@Override
@@ -86,11 +89,12 @@ public class RunAway extends RoboticsAPIApplication {
 		};
 		//acu.attachTo(lBR_iiwa_7_R800_1.getFlange());
 		
-		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Z, 20000);
-		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Y, 20000);
-		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.X, 20000);
+		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Z, 30);
+		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Y, 30);
+		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.X, 30);
+		tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		tcpAc.move(linRel(0,0,100).triggerWhen(forta_Z, getPosaction));
+		
 	
 	
 	}
