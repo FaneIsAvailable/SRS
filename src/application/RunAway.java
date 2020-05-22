@@ -96,13 +96,13 @@ public class RunAway extends RoboticsAPIApplication {
 		};
 		//acu.attachTo(lBR_iiwa_7_R800_1.getFlange());
 		
-		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc,myWorld, CoordinateAxis.Z, 0.5);
-		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 1);
-		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 1);
+		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(lBR_iiwa_7_R800_1.getFlange(),myWorld, CoordinateAxis.Z, 0.5);
+		//ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 1);
+		//ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 1);
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		IMotionContainer mc= lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")));
+		IMotionContainer mc= lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")).breakWhen(forta_Z));
 		getLogger().info("Forta:"+lBR_iiwa_7_R800_1.getExternalForceTorque(tcpAc, myWorld).getForce().getZ());
 		 /*if (mc.hasFired(forta_Z)){
 			 getLogger().info("gata:nuu");
