@@ -87,8 +87,7 @@
         <toolTemplate class="" name="DaNeedle">
             <frames>
                 <frame id="_a93b5a7a-d98b-4a07-ba44-e10362037615" name="DaTCP">
-                    <transformation a="0.0" b="0.0" c="0.0" x="8.120509427745763" y="9.495065439474597" z="348.3397934830038"/>
-                    <measurementTranslation calculationError="3.6018441701502426" method="XYZ4Point" timestamp="1582892898844"/>
+                    <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="150.0"/>
                 </frame>
             </frames>
             <additionalInformation>
