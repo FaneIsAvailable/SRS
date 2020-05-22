@@ -1,6 +1,8 @@
 package application;
 
 
+import java.util.concurrent.TimeUnit;
+
 import javax.inject.Inject;
 
 import com.kuka.generated.ioAccess.Robotiq3FIOGroup;
@@ -96,9 +98,9 @@ public class RunAway extends RoboticsAPIApplication {
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		getLogger().info(forta_Y.toString());
-		getLogger().info(forta_X.toString());
-		getLogger().info(forta_Z.toString());
+		tcpAc.move(positionHold(cmode, 10, TimeUnit.SECONDS));
+		tcpAc.move(lin(myLBR.getCurrentCartesianPosition(tcpAc, myWorld)));
+		tcpAc.move(positionHold(cmode, 10, TimeUnit.SECONDS));
 	
 	}
 	
