@@ -56,7 +56,7 @@ public class RunAway extends RoboticsAPIApplication {
 	private CartesianImpedanceControlMode cmode;    
 	private Frame currentPos;
 	private Frame commandPos;
-	private MediaFlangeIOGroup led;
+	
 
 	@Override
 	public void initialize() {
@@ -73,14 +73,14 @@ public class RunAway extends RoboticsAPIApplication {
 		cmode=new CartesianImpedanceControlMode();
 		cmode.parametrize(CartDOF.Z).setStiffness(1000);
 		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(1000);
-		led =new MediaFlangeIOGroup(myController);
+		
 		}
 
 	@Override
 	public void run() {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
-		led.setLEDBlue(true);
+		
 		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")));
 		ICallbackAction getPosaction =new ICallbackAction() {
 			
@@ -104,7 +104,7 @@ public class RunAway extends RoboticsAPIApplication {
 		tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
 		tcpAc.move(lin(myLBR.getCurrentCartesianPosition(tcpAc, myWorld)));
 		tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
-		led.setLEDBlue(false);
+		
 	
 	}
 	
