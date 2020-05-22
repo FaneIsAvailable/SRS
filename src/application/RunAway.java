@@ -72,8 +72,8 @@ public class RunAway extends RoboticsAPIApplication {
 		rr= new Robo_3f(myController);
 		rr.close_full();
 		cmode=new CartesianImpedanceControlMode();
-		cmode.parametrize(CartDOF.Z).setStiffness(1000);
-		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(1000);
+		cmode.parametrize(CartDOF.Z).setStiffness(3000);
+		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(3000);
 		
 		}
 
@@ -96,13 +96,13 @@ public class RunAway extends RoboticsAPIApplication {
 		};
 		//acu.attachTo(lBR_iiwa_7_R800_1.getFlange());
 		
-		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc,myWorld, CoordinateAxis.Z, 30);
-		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 30);
-		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 30);
+		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc,myWorld, CoordinateAxis.Z, 10);
+		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 10);
+		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 10);
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		IMotionContainer mc= tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS).breakWhen(forta_Z).breakWhen(forta_X).breakWhen(forta_Y));
+		IMotionContainer mc= tcpAc.move(positionHold(cmode, 0, TimeUnit.SECONDS).breakWhen(forta_Z).breakWhen(forta_X).breakWhen(forta_Y));
 		 if (mc.hasFired(forta_Z)){
 			 getLogger().info("gata:nuu");
 			 tcpAc.move(linRel(0,0,50));
