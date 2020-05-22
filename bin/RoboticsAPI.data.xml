@@ -83,18 +83,18 @@
             </redundancyData>
         </frame>
         <frame id="_40b100f5-f98e-4324-8ba5-6d7aa02cb65d" name="Puct1">
-            <transformation a="-1.3853541556130473" b="2.7234555804198557E-4" c="-1.508884180583607" x="542.0457564596506" y="101.61109808300692" z="758.3046881485924"/>
+            <transformation a="-1.4008658153988212" b="0.006610401048986366" c="3.078208594305696" x="380.81831975256534" y="62.15435998065303" z="593.0014615651442"/>
             <additionalInformation>
-                <info key="LastModificationTime" type="java.lang.Long" value="1590129981059"/>
+                <info key="LastModificationTime" type="java.lang.Long" value="1590134286819"/>
                 <info base="LBR_iiwa_7_R800_1" controller="KUKA_Sunrise_Cabinet_1" device="LBR_iiwa_7_R800_1" tcpName="Flange" tool="Flange" type="com.kuka.roboticsAPI.deviceModel.TeachInformation">
                     <tcpTransformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
                 </info>
             </additionalInformation>
             <redundancyData>
                 <redundancy transformationProviderName="KUKA_Sunrise_Cabinet_1/LBR_iiwa_7_R800_1" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy">
-                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$StatusParameter" value="6" valueType="java.lang.Integer"/>
-                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$TurnParameter" value="110" valueType="java.lang.Integer"/>
-                    <info type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy$E1Parameter" value="-0.5111171254474931" valueType="java.lang.Double"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$StatusParameter" value="2" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.StatusTurnRedundancy$TurnParameter" value="78" valueType="java.lang.Integer"/>
+                    <info type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy$E1Parameter" value="-0.5093968498514957" valueType="java.lang.Double"/>
                 </redundancy>
             </redundancyData>
         </frame>
