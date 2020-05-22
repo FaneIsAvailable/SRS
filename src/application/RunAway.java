@@ -96,9 +96,9 @@ public class RunAway extends RoboticsAPIApplication {
 		};
 		//acu.attachTo(lBR_iiwa_7_R800_1.getFlange());
 		
-		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc,myWorld, CoordinateAxis.Z, 10);
-		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 10);
-		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 10);
+		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc,myWorld, CoordinateAxis.Z, 1);
+		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 1);
+		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 1);
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
