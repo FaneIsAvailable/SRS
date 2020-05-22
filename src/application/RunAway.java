@@ -23,6 +23,7 @@ import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
 import com.kuka.roboticsAPI.geometricModel.World;
 import com.kuka.roboticsAPI.geometricModel.math.CoordinateAxis;
+import com.kuka.roboticsAPI.motionModel.IMotionContainer;
 import com.kuka.roboticsAPI.motionModel.controlModeModel.CartesianImpedanceControlMode;
 
 /**
@@ -95,16 +96,16 @@ public class RunAway extends RoboticsAPIApplication {
 		};
 		//acu.attachTo(lBR_iiwa_7_R800_1.getFlange());
 		
-		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Z, 30);
-		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Y, 30);
-		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.X, 30);
+		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc,myWorld, CoordinateAxis.Z, 30);
+		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.Y, 30);
+		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, myWorld,CoordinateAxis.X, 30);
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		
-		tcpAc.move(lin(myLBR.getCurrentCartesianPosition(tcpAc, myWorld)).setMode(cmode));
-		//tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
-		
+		IMotionContainer mc= tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS).breakWhen(forta_Z).breakWhen(forta_X).breakWhen(forta_Y));
+		 if (mc.hasFired(forta_Z)){
+			 tcpAc.move(linRel(0,0,50));
+			 }
 	
 	}
 	
