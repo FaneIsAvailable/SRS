@@ -101,9 +101,9 @@ public class RunAway extends RoboticsAPIApplication {
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
-		tcpAc.move(lin(myLBR.getCurrentCartesianPosition(tcpAc, myWorld)));
-		tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
+		
+		tcpAc.move(lin(myLBR.getCurrentCartesianPosition(tcpAc, myWorld)).setMode(cmode));
+		//tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
 		
 	
 	}
