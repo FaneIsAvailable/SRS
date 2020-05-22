@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
+import com.kuka.generated.ioAccess.MediaFlangeIOGroup;
 import com.kuka.generated.ioAccess.Robotiq3FIOGroup;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
@@ -55,7 +56,7 @@ public class RunAway extends RoboticsAPIApplication {
 	private CartesianImpedanceControlMode cmode;    
 	private Frame currentPos;
 	private Frame commandPos;
-	
+	private MediaFlangeIOGroup led;
 
 	@Override
 	public void initialize() {
@@ -72,12 +73,14 @@ public class RunAway extends RoboticsAPIApplication {
 		cmode=new CartesianImpedanceControlMode();
 		cmode.parametrize(CartDOF.Z).setStiffness(1000);
 		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(1000);
-	}
+		led =new MediaFlangeIOGroup(myController);
+		}
 
 	@Override
 	public void run() {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
+		led.setLEDBlue(true);
 		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")));
 		ICallbackAction getPosaction =new ICallbackAction() {
 			
@@ -98,9 +101,10 @@ public class RunAway extends RoboticsAPIApplication {
 		
 		//tcpAc.move(linRel(0,0,50).setMode(cmode).triggerWhen(forta_Z, getPosaction));
 		
-		tcpAc.move(positionHold(cmode, 10, TimeUnit.SECONDS));
+		tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
 		tcpAc.move(lin(myLBR.getCurrentCartesianPosition(tcpAc, myWorld)));
-		tcpAc.move(positionHold(cmode, 10, TimeUnit.SECONDS));
+		tcpAc.move(positionHold(cmode, 1, TimeUnit.SECONDS));
+		led.setLEDBlue(false);
 	
 	}
 	
