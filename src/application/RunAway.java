@@ -7,11 +7,18 @@ import com.kuka.generated.ioAccess.Robotiq3FIOGroup;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
+import com.kuka.roboticsAPI.conditionModel.ForceComponentCondition;
+import com.kuka.roboticsAPI.conditionModel.ForceCondition;
+import com.kuka.roboticsAPI.conditionModel.ICallbackAction;
 import com.kuka.roboticsAPI.controllerModel.Controller;
 import com.kuka.roboticsAPI.deviceModel.LBR;
+import com.kuka.roboticsAPI.deviceModel.PositionInformation;
+import com.kuka.roboticsAPI.executionModel.IFiredTriggerInfo;
+import com.kuka.roboticsAPI.geometricModel.Frame;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
 import com.kuka.roboticsAPI.geometricModel.World;
+import com.kuka.roboticsAPI.geometricModel.math.CoordinateAxis;
 import com.kuka.roboticsAPI.motionModel.controlModeModel.CartesianImpedanceControlMode;
 
 /**
@@ -43,6 +50,9 @@ public class RunAway extends RoboticsAPIApplication {
 	private Robotiq3FIOGroup robo;
 	private Robo_3f rr;
 	private CartesianImpedanceControlMode cmode;    
+	private Frame currentPos;
+	private Frame commandPos;
+	
 
 	@Override
 	public void initialize() {
@@ -63,5 +73,24 @@ public class RunAway extends RoboticsAPIApplication {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Puct1")));
+		ICallbackAction getPosaction =new ICallbackAction() {
+			
+			@Override
+			public void onTriggerFired(IFiredTriggerInfo triggerInformation) {
+				// TODO Auto-generated method stub
+				PositionInformation posinfo=triggerInformation.getPositionInformation();
+				currentPos=posinfo.getCurrentCartesianPosition();
+				commandPos=posinfo.getCommandedCartesianPosition();
+				
+			}
+		};
+		//acu.attachTo(lBR_iiwa_7_R800_1.getFlange());
+		
+		ForceCondition forta_Z=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Z, 30);
+		ForceCondition forta_Y=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.Y, 30);
+		ForceCondition forta_X=ForceCondition.createNormalForceCondition(tcpAc, CoordinateAxis.X, 30);
+		tcpAc.move(linRel(0,0,10).triggerWhen(forta_Z, getPosaction));
+	
+	
 	}
 }
