@@ -67,6 +67,7 @@ public class RunAway extends RoboticsAPIApplication {
 		acu.attachTo(myLBR.getFlange());
 		rr= new Robo_3f(myController);
 		rr.close_full();
+		cmode=new CartesianImpedanceControlMode();
 		cmode.parametrize(CartDOF.Z).setStiffness(1000);
 		cmode.parametrize(CartDOF.X, CartDOF.Y).setStiffness(1000);
 	}
