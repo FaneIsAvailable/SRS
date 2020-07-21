@@ -98,6 +98,30 @@
                 </redundancy>
             </redundancyData>
         </frame>
+        <frame id="_c1592395-feb0-4010-a82d-c38f34d49315" name="Punct_burete_1">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1592240880932"/>
+            </additionalInformation>
+        </frame>
+        <frame id="_0858981e-e5b7-4754-8fa6-9221c4315f30" name="Punct_burete_2">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1592240924330"/>
+            </additionalInformation>
+        </frame>
+        <frame id="_06f8877f-fb54-4b8c-bad9-8275da1258c0" name="Punct_burete_3">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1592240938589"/>
+            </additionalInformation>
+        </frame>
+        <frame id="_330812b6-63d7-46ec-9267-98372a71b9b5" name="Punct_Burete_4">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1592240988171"/>
+            </additionalInformation>
+        </frame>
     </world>
     <objectTemplates>
         <toolTemplate class="" name="DaNeedle">
