@@ -2,6 +2,8 @@ package application;
 
 
 import javax.inject.Inject;
+
+import com.kuka.common.ThreadUtil;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
@@ -58,6 +60,15 @@ public class HEAL4 extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
+		int res;
 		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Punct_insertie_HEAL")));
+		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/P1")));
+		lBR_iiwa_7_R800_1.move(lin(getApplicationData().getFrame("/P2")));
+		lBR_iiwa_7_R800_1.move(lin(getApplicationData().getFrame("/P3")));
+		ThreadUtil.milliSleep(10000);
+		lBR_iiwa_7_R800_1.move(lin(getApplicationData().getFrame("/P2")));
+		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/P1")));
+		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Punct_insertie_HEAL")));
+		lBR_iiwa_7_R800_1.move(ptpHome());
 	}
 }
