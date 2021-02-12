@@ -107,6 +107,8 @@
                 <Interface id="com.kuka/Bundle/javax.servlet" version="3.0.0"/>
                 <Interface id="com.kuka/Bundle/org.eclipse.jetty.server" version="8.1.15"/>
             </SoftwareItem>
+            <SoftwareItem autoSelected="false" canChangeSelection="true" displayName="KUKA Sunrise.Basic Toolbox" installItem="false" installedVersion="NONE" itemPath="com.kuka/BasicToolbox" selectedVersion="NONE" usage="Feature"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="KUKA Sunrise.Basic Toolbox Example Applications" installItem="false" installedVersion="NONE" itemPath="com.kuka/BasicToolboxExampleApplications" selectedVersion="NONE" usage="Feature"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Cabinet" installItem="true" installedVersion="1" itemPath="com.kuka/Cabinet" selectedVersion="1" usage="Library">
                 <Interface id="com.kuka/Cabinet/CabCtrl" version="0.8.4"/>
             </SoftwareItem>
@@ -142,14 +144,19 @@
                 <Interface id="com.kuka/EtherCATWrapper/EtherCATWrapperBase" version="0.8.4"/>
             </SoftwareItem>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FSoE Slave support" installItem="false" installedVersion="NONE" itemPath="com.kuka/FSoESlaveSupport" selectedVersion="NONE" usage="Feature"/>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FastRobotInterface RT-Libs" installItem="true" installedVersion="1" itemPath="com.kuka/FastRobotInterface" selectedVersion="1" usage="Library">
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FastRobotInterface RT-Libs" installItem="true" installedVersion="NONE" itemPath="com.kuka/FastRobotInterface" selectedVersion="NONE" usage="Library">
                 <Interface id="com.kuka/FastRobotInterface/FastRobotInterface" version="0.1.0"/>
             </SoftwareItem>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FastRobotInterface Client SDK" installItem="true" installedVersion="1" itemPath="com.kuka/FastRobotInterface_SDK_Cpp" selectedVersion="1" usage="Library">
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FastRobotInterface Client SDK" installItem="true" installedVersion="NONE" itemPath="com.kuka/FastRobotInterface_SDK_Cpp" selectedVersion="NONE" usage="Library">
                 <Interface id="com.kuka/FastRobotInterface_SDK_Cpp/FastRobotInterface_SDK_Cpp" version="0.1.0"/>
             </SoftwareItem>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="GMS Adjustment" installItem="false" installedVersion="NONE" itemPath="com.kuka/GMSAdjustment" selectedVersion="NONE" usage="Feature"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="GenericSunriseIODevice" installItem="true" installedVersion="NONE" itemPath="com.kuka/GenericSunriseIODevice" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="KUKA Sunrise.GripperToolbox" installItem="false" installedVersion="NONE" itemPath="com.kuka/GripperToolbox" selectedVersion="NONE" usage="Feature"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="GtbBackgroundTask" installItem="true" installedVersion="NONE" itemPath="com.kuka/GtbBackgroundTask" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="GtbObjectTemplates" installItem="true" installedVersion="NONE" itemPath="com.kuka/GtbObjectTemplates" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="GtbPartialProjects" installItem="true" installedVersion="NONE" itemPath="com.kuka/GtbPartialProjects" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="GtbSmartHMI" installItem="true" installedVersion="NONE" itemPath="com.kuka/GtbSmartHMI" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="HandGuiding" installItem="true" installedVersion="1" itemPath="com.kuka/HandGuiding" selectedVersion="1" usage="Library">
                 <Interface id="com.kuka/HandGuiding/Realtime" version="1.0.0"/>
                 <Interface id="com.kuka/HandGuiding/SmartHMI" version="1.0.0"/>
@@ -165,6 +172,9 @@
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="IOManager" installItem="true" installedVersion="1" itemPath="com.kuka/IOManager" selectedVersion="1" usage="Library">
                 <Interface id="com.kuka/IOManager/IOManager" version="0.1.0"/>
             </SoftwareItem>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Ikarus AntiVirus Definition Files" installItem="true" installedVersion="NONE" itemPath="com.kuka/IkarusAntiVirDefinition" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Ikarus AntiVirus" installItem="false" installedVersion="NONE" itemPath="com.kuka/IkarusAntiVirInstallation" selectedVersion="NONE" usage="Feature"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Ikarus AntiVirus SmartHMI" installItem="true" installedVersion="NONE" itemPath="com.kuka/IkarusAntiVirSmartHMI" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="InjectionLib" installItem="true" installedVersion="1" itemPath="com.kuka/InjectionLib" selectedVersion="1" usage="Library">
                 <Interface id="com.kuka/InjectionLib/InjectionLib" version="0.1.0"/>
             </SoftwareItem>
@@ -175,7 +185,7 @@
                 <Interface id="com.kuka/JointOTGSupport/GSRecorder" version="0.1.0"/>
                 <Interface id="com.kuka/JointOTGSupport/JointOTGSupport" version="0.1.0"/>
             </SoftwareItem>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="KUKA Option Network Interface" installItem="true" installedVersion="1" itemPath="com.kuka/KONISupport" selectedVersion="1" usage="Library">
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="KUKA Option Network Interface" installItem="true" installedVersion="NONE" itemPath="com.kuka/KONISupport" selectedVersion="NONE" usage="Library">
                 <Interface id="com.kuka/KONISupport/KONISupport" version="0.1.0"/>
             </SoftwareItem>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="KrcDiag" installItem="true" installedVersion="8.5.8.9" itemPath="com.kuka/KrcDiag" selectedVersion="8.5.8.9" usage="Library">
@@ -324,8 +334,8 @@
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="SunriseBasicCompounds" installItem="true" installedVersion="1" itemPath="com.kuka/SunriseBasicCompounds" selectedVersion="1" usage="Library">
                 <Interface id="com.kuka/SunriseBasicCompounds/SunriseBasicCompounds" version="0.1.1"/>
             </SoftwareItem>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Sunrise Data Recording" installItem="true" installedVersion="1" itemPath="com.kuka/SunriseDataRecording" selectedVersion="1" usage="Feature"/>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="SunriseDataRecordingRTLibrary" installItem="true" installedVersion="1" itemPath="com.kuka/SunriseDataRecordingRTLibrary" selectedVersion="1" usage="Library">
+            <SoftwareItem autoSelected="false" canChangeSelection="true" displayName="Sunrise Data Recording" installItem="false" installedVersion="NONE" itemPath="com.kuka/SunriseDataRecording" selectedVersion="NONE" usage="Feature"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="SunriseDataRecordingRTLibrary" installItem="true" installedVersion="NONE" itemPath="com.kuka/SunriseDataRecordingRTLibrary" selectedVersion="NONE" usage="Library">
                 <Interface id="com.kuka/SunriseDataRecordingRTLibrary/DataRecorderTriggerAction" version="0.1.0"/>
                 <Interface id="com.kuka/SunriseDataRecordingRTLibrary/DynDFELogger" version="0.1.1"/>
             </SoftwareItem>
@@ -430,6 +440,10 @@
                 <Interface id="com.kuka/Bundle/com.kuka.authorizationService.ncf" version="1.1.0"/>
                 <Interface id="com.kuka/OSGi/com.kuka.authorizationService" version="1.1.0"/>
             </SoftwareItem>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.basictoolbox" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.basictoolbox" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.basictoolbox.exampleApplications" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.basictoolbox.exampleApplications" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.collisiondetection" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.collisiondetection" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.collisiondetection.environments" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.collisiondetection.environments" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.command.api" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.command.api" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.command.provider.api" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.command.provider.api" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.common" installItem="true" installedVersion="2.0.1.9" itemPath="com.kuka/com.kuka.common" selectedVersion="2.0.1.9" usage="Library">
@@ -494,11 +508,8 @@
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Direct Servo Motion Example Applications" installItem="true" installedVersion="1.15.0.Con1-16-0_4" itemPath="com.kuka/com.kuka.connectivity.directServo.exampleApplications" selectedVersion="1.15.0.Con1-16-0_4" usage="Feature">
                 <Interface id="com.kuka/Bundle/com.kuka.connectivity.directServo.exampleApplications" version="1.15.0"/>
             </SoftwareItem>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Fast Robot Interface Extension" installItem="true" installedVersion="1.15.1.Con1-16-0_4" itemPath="com.kuka/com.kuka.connectivity.fastRobotInterface" selectedVersion="1.15.1.Con1-16-0_4" usage="Feature">
-                <Interface id="com.kuka/Bundle/com.kuka.connectivity.fastRobotInterface" version="1.15.1"/>
-                <Interface id="com.kuka/OSGi/com.kuka.connectivity.fastRobotInterface" version="1.15.1"/>
-            </SoftwareItem>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FastRobotInterface - Java SDK Libs" installItem="true" installedVersion="1.15.1.Con1-16-0_4" itemPath="com.kuka/com.kuka.connectivity.fastRobotInterface.clientSDK" selectedVersion="1.15.1.Con1-16-0_4" usage="Library">
+            <SoftwareItem autoSelected="false" canChangeSelection="true" displayName="Fast Robot Interface Extension" installItem="false" installedVersion="NONE" itemPath="com.kuka/com.kuka.connectivity.fastRobotInterface" selectedVersion="NONE" usage="Feature"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="FastRobotInterface - Java SDK Libs" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.connectivity.fastRobotInterface.clientSDK" selectedVersion="NONE" usage="Library">
                 <Interface id="com.kuka/OSGi/com.kuka.connectivity.fastRobotInterface.clientSDK.connection" version="1.15.0"/>
                 <Interface id="com.kuka/OSGi/com.google.protobuf" version="2.5.0"/>
                 <Interface id="com.kuka/Bundle/com.kuka.connectivity.fastRobotInterface.clientSDK" version="1.15.1"/>
@@ -506,9 +517,7 @@
                 <Interface id="com.kuka/OSGi/com.kuka.connectivity.fastRobotInterface.clientSDK.protobuf.gen" version="1.15.0"/>
                 <Interface id="com.kuka/OSGi/com.kuka.connectivity.fastRobotInterface.clientSDK.clientLBR" version="1.15.0"/>
             </SoftwareItem>
-            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Fast Robot Interface Extension Example Applications" installItem="true" installedVersion="1.15.0.Con1-16-0_4" itemPath="com.kuka/com.kuka.connectivity.fastRobotInterface.exampleApplications" selectedVersion="1.15.0.Con1-16-0_4" usage="Feature">
-                <Interface id="com.kuka/Bundle/com.kuka.connectivity.fastRobotInterface.exampleApplications" version="1.15.0"/>
-            </SoftwareItem>
+            <SoftwareItem autoSelected="false" canChangeSelection="true" displayName="Fast Robot Interface Extension Example Applications" installItem="false" installedVersion="NONE" itemPath="com.kuka/com.kuka.connectivity.fastRobotInterface.exampleApplications" selectedVersion="NONE" usage="Feature"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Smart Servo Motion Extension" installItem="true" installedVersion="1.16.0.Con1-16-0_4" itemPath="com.kuka/com.kuka.connectivity.smartServo" selectedVersion="1.16.0.Con1-16-0_4" usage="Feature">
                 <Interface id="com.kuka/OSGi/com.kuka.connectivity.motionModel.smartServo" version="1.15.0"/>
                 <Interface id="com.kuka/Bundle/com.kuka.connectivity.smartServo" version="1.16.0"/>
@@ -557,6 +566,12 @@
                 <Interface id="com.kuka/Bundle/com.kuka.git" version="1.0.0"/>
                 <Interface id="com.kuka/OSGi/com.kuka.git" version="1.0.0"/>
             </SoftwareItem>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.grippertoolbox.api" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.grippertoolbox.api" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.grippertoolbox.common" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.grippertoolbox.common" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.grippertoolbox.gripper" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.grippertoolbox.gripper" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.grippertoolbox.impl" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.grippertoolbox.impl" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.grippertoolbox.service" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.grippertoolbox.service" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.grippertoolbox.service.ncf" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.grippertoolbox.service.ncf" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.jogging.provider.api" installItem="true" installedVersion="1.0.0.9" itemPath="com.kuka/com.kuka.jogging.provider.api" selectedVersion="1.0.0.9" usage="Library">
                 <Interface id="com.kuka/Bundle/com.kuka.jogging.provider.api" version="1.0.0"/>
                 <Interface id="com.kuka/OSGi/com.kuka.jogging.provider.api.motions" version="1.0.0"/>
@@ -743,6 +758,8 @@
                 <Interface id="com.kuka/OSGi/com.kuka.roboticsAPI.applicationServer.services.handGuidingService" version="1.15.0"/>
                 <Interface id="com.kuka/Bundle/com.kuka.service.handGuiding.ncf" version="1.15.0"/>
             </SoftwareItem>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="Ikarus AntiVirus Service" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.service.virusScanner" selectedVersion="NONE" usage="Library"/>
+            <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.service.virusScanner.ncf" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.service.virusScanner.ncf" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.smartPad.api" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.smartPad.api" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.smartPad.impl" installItem="true" installedVersion="NONE" itemPath="com.kuka/com.kuka.smartPad.impl" selectedVersion="NONE" usage="Library"/>
             <SoftwareItem autoSelected="true" canChangeSelection="true" displayName="com.kuka.statuscontroller" installItem="true" installedVersion="1.1.0.9" itemPath="com.kuka/com.kuka.statuscontroller" selectedVersion="1.1.0.9" usage="Library">
