@@ -48,6 +48,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 	private int Eversion_amp;
 	private int Adduction_amp;
 	private int Abduction_amp;
+	MediaFlangeIOGroup ioFlange;
 	private MediaFlangeIOGroup led;
 
 	@Override
