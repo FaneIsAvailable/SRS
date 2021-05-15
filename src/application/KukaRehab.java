@@ -150,19 +150,12 @@ public class KukaRehab extends RoboticsAPIApplication {
 			getLogger().info("Flexion = "+Flexion_amp+ "Dorsifelxion = " +Dorsiflexion_amp);
 		
 		for (int i=0;i<5;i++){
-		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0, getApplicationData().getFrame("/Mount_patient")));
-		myAnkleTcp.move(linRel(0, 0, 0, 0, -Dorsiflexion_amp*Math.PI/180, 0,getApplicationData().getFrame("/Mount_patient")));
+		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
+		myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
 		
 		
 		}
-			//myAnkleTcp.move(linRel(0,0,0,10,0,0));
-		//	myAnkleTcp.move(linRel(0,0,0,-Flexion_amp,0,0));
-			//myAnkleTcp.move(linRel(0,0,0,Dorsiflexion_amp,0,0));
-			//myAnkleTcp.move(linRel(0,0,0,-Dorsiflexion_amp,0,0));
-		//}
-		
-		// TODO Auto-generated method stub
-		
+				
 	}}
 		 
 		
