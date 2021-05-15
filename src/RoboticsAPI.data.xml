@@ -605,7 +605,8 @@
         <toolTemplate class="" name="Kuka_ankle_tool">
             <frames>
                 <frame id="_79c3dcbb-6bc8-41a9-ad31-8e65b7fb25c5" name="Ankle_TCP">
-                    <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+                    <transformation a="0.0" b="0.0" c="0.0" x="88.69998574258855" y="2.5035919126822876" z="69.04504486171538"/>
+                    <measurementTranslation calculationError="4.675353753061569" method="XYZ4Point" timestamp="1621079543468"/>
                 </frame>
             </frames>
             <additionalInformation>
