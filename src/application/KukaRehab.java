@@ -131,9 +131,10 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 6:break;}
 		
 		
-		myLBR.move(linRel(Transformation.ofDeg(10, 10, 10, 10, 0, 0),getApplicationData().getFrame("/Mount_patient")));
-		//if (Flexion_amp!=0 && Dorsiflexion_amp!=0)
-		//for (int i=1;i<=5;i++){
+		
+		//myLBR.move(linRel(Transformation.ofDeg(10, 10, 10, 10, 0, 0),getApplicationData().getFrame("/Mount_patient")));
+		if (Flexion_amp!=0 && Dorsiflexion_amp!=0)
+			myAnkleTcp.move(ptpHome());
 			//myAnkleTcp.move(linRel(0,0,0,10,0,0));
 		//	myAnkleTcp.move(linRel(0,0,0,-Flexion_amp,0,0));
 			//myAnkleTcp.move(linRel(0,0,0,Dorsiflexion_amp,0,0));
