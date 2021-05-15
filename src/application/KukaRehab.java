@@ -162,8 +162,8 @@ public class KukaRehab extends RoboticsAPIApplication {
 			
 		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
 		getLogger().info("Flex");
-			myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
-			getLogger().info("back");
+			//myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
+			//getLogger().info("back");
 		
 				
 	//	}
