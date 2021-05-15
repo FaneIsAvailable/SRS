@@ -211,7 +211,7 @@ int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION
 			myAnkleTcp.move(linRel(0, 0, 0, 0,0, -((Inversion_amp+Eversion_amp)*Math.PI/180)));
 			myAnkleTcp.move(linRel(0, 0, 0, 0,0, ((Inversion_amp+Eversion_amp)*Math.PI/180)));
 			}
-		myAnkleTcp.move(linRel(0, 0, 0, 0,0,(Inversion_amp*Math.PI/180)));
+		myAnkleTcp.move(linRel(0, 0, 0, 0,0,-(Inversion_amp*Math.PI/180)));
 		}
 				
 	}
