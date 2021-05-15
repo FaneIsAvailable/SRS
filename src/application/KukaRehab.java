@@ -158,7 +158,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 			getLogger().info("Flexion = "+Flexion_amp+ "Dorsifelxion = " +Dorsiflexion_amp);
 		
 			
-		for (int i=0;i<5;i++){
+		//for (int i=0;i<5;i++){
 			
 		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
 		getLogger().info("Flex");
@@ -166,7 +166,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 			getLogger().info("back");
 		
 				
-		}
+	//	}
 		}
 				
 	}}
