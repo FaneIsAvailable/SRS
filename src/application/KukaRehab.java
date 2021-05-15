@@ -151,9 +151,8 @@ public class KukaRehab extends RoboticsAPIApplication {
 		
 		for (int i=0;i<5;i++){
 		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
-		myAnkleTcp.move(linRel(0, 0, 0, 0, (-Flexion_amp)*Math.PI/180, 0));
-		myAnkleTcp.move(linRel(0, 0, 0, 0, (-Dorsiflexion_amp)*Math.PI/180, 0));
-		myAnkleTcp.move(linRel(0, 0, 0, 0, (Dorsiflexion_amp)*Math.PI/180, 0));
+		myAnkleTcp.move(linRel(0, 0, 0, 0, -Flexion_amp*Math.PI/180, 0));
+		
 		
 		}
 			//myAnkleTcp.move(linRel(0,0,0,10,0,0));
