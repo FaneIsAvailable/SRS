@@ -100,7 +100,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 	}
 
 	private void myInversionEversion() {
-		myMainMenu();
+		
 		// TODO Auto-generated method stub
 		
 	}
@@ -115,7 +115,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 3:Flexion_amp=20;
 		case 4:Flexion_amp=25;
 		case 5:Flexion_amp=30;
-		case 6:myMainMenu();
+		case 6:break;
 		}
 		
 		if (Flexion_amp!=0){
@@ -127,7 +127,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 3:Dorsiflexion_amp=20;
 		case 4:Dorsiflexion_amp=25;
 		case 5:Dorsiflexion_amp=30;
-		case 6:myMainMenu();}
+		case 6:break;}
 		// TODO Auto-generated method stub
 		
 	}
