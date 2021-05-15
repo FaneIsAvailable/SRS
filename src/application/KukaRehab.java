@@ -38,6 +38,12 @@ public class KukaRehab extends RoboticsAPIApplication {
 	private ObjectFrame myWorld;
 	private Tool myAnkle;
 	private ObjectFrame myAnkleTcp;
+	private int Flexion_amp;
+	private int Dorsiflexion_amp;
+	private int Inversion_amp;
+	private int Eversion_amp;
+	private int Adduction_amp;
+	private int Abduction_amp;
 
 	@Override
 	public void initialize() {
@@ -86,7 +92,27 @@ public class KukaRehab extends RoboticsAPIApplication {
 	}
 
 	private void myAdductionAbduction() {
-		myMainMenu();
+	
+		int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select flexion angle", "5", "10", "15","20","25","30");
+		switch (flex){
+		case 0:Flexion_amp=5;
+		case 1:Flexion_amp=10;
+		case 2:Flexion_amp=15;
+		case 3:Flexion_amp=20;
+		case 4:Flexion_amp=25;
+		case 5:Flexion_amp=30;
+		case 6:myMainMenu();
+		}
+		int dorsi=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select dorsiflexion angle", "5", "10", "15","20","25","30");
+		switch (dorsi){
+		case 0:Dorsiflexion_amp=5;
+		case 1:Dorsiflexion_amp=10;
+		case 2:Dorsiflexion_amp=15;
+		case 3:Dorsiflexion_amp=20;
+		case 4:Dorsiflexion_amp=25;
+		case 5:Dorsiflexion_amp=30;
+		case 6:myMainMenu();
+		}
 		// TODO Auto-generated method stub
 		
 	}
