@@ -4,7 +4,13 @@ package application;
 import javax.inject.Inject;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
+
+import com.kuka.roboticsAPI.controllerModel.Controller;
 import com.kuka.roboticsAPI.deviceModel.LBR;
+import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
+import com.kuka.roboticsAPI.geometricModel.Tool;
+import com.kuka.roboticsAPI.geometricModel.World;
+import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 
 /**
  * Implementation of a robot application.
@@ -27,15 +33,71 @@ import com.kuka.roboticsAPI.deviceModel.LBR;
 public class KukaRehab extends RoboticsAPIApplication {
 	@Inject
 	private LBR lBR_iiwa_7_R800_1;
+	private Controller myController;
+	private LBR myLBR;
+	private ObjectFrame myWorld;
+	private Tool myAnkle;
+	private ObjectFrame myAnkleTcp;
 
 	@Override
 	public void initialize() {
 		// initialize your application here
+		myController = getController("KUKA_Sunrise_Cabinet_1");
+		myLBR = (LBR) getDevice(myController,"LBR_iiwa_7_R800_1");
+		myWorld = World.Current.getRootFrame();
+		myAnkle=getApplicationData().createFromTemplate("Kuka_ankle_tool");
+		myAnkleTcp=myAnkle.getFrame("Ankle_TCP");
+		myAnkle.attachTo(myLBR.getFlange());
 	}
 
 	@Override
 	public void run() {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
+		
+		myAnkleTcp.move(ptp(getApplicationData().getFrame("/Mount_patient")));
+		myMainMenu();
+		
+		}
+	public void myMainMenu(){
+		int resp=0;
+		do {
+			resp=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select action", "Perform flexion/dorsiflexion", "Perform inversion/eversion", "Perform adducion/abduction","Exit");
+			switch (resp){
+			case 0:{
+				getLogger().info("Perform Flexion/Dorsiflexion");
+				myFlexionDorsiflexion();}
+			case 1:{
+				getLogger().info("Perform Inversion/Eversion");
+				myInversionEversion();}
+			case 2:{
+				getLogger().info("Perform Adduction/Abduction");
+				myAdductionAbduction();}
+			case 3:
+				getLogger().info("Exiting");
+			
+			}
+		}
+		while (0!=resp);
+		
 	}
-}
+
+	private void myAdductionAbduction() {
+		myMainMenu();
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void myInversionEversion() {
+		myMainMenu();
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void myFlexionDorsiflexion() {
+		myMainMenu();
+		// TODO Auto-generated method stub
+		
+	}
+	
+	}
