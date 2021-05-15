@@ -13,6 +13,7 @@ import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
 import com.kuka.roboticsAPI.geometricModel.World;
 import com.kuka.roboticsAPI.geometricModel.math.Transformation;
+import com.kuka.roboticsAPI.motionModel.IMotionContainer;
 import com.kuka.roboticsAPI.motionModel.MotionBatch;
 import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 
@@ -49,8 +50,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 	private int Eversion_amp;
 	private int Adduction_amp;
 	private int Abduction_amp;
-	MediaFlangeIOGroup ioFlange;
-	private MediaFlangeIOGroup led;
+	private IMotionContainer mc;
 
 	@Override
 	public void initialize() {
@@ -61,7 +61,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 		myAnkle=getApplicationData().createFromTemplate("Kuka_ankle_tool");
 		myAnkleTcp=myAnkle.getFrame("Ankle_TCP");
 		myAnkle.attachTo(myLBR.getFlange());
-		led=new MediaFlangeIOGroup(myController);
+	
 	}
 
 	@Override
@@ -157,17 +157,17 @@ public class KukaRehab extends RoboticsAPIApplication {
 		//myLBR.move(linRel(Transformation.ofDeg(10, 10, 10, 10, 0, 0),getApplicationData().getFrame("/Mount_patient")));
 		if (Flexion_amp!=0 && Dorsiflexion_amp!=0){
 			getLogger().info("Flexion = "+Flexion_amp+ "Dorsifelxion = " +Dorsiflexion_amp);
-		
+			MotionBatch mc= new MotionBatch(
+					linRel(0, 0, 0, 0, (Flexion_amp*Math.PI/180), 0),
+					linRel(0, 0, 0, 0, -(Flexion_amp*Math.PI/180), 0),
+					linRel(0, 0, 0, 0, -(Dorsiflexion_amp*Math.PI/180), 0),
+					linRel(0, 0, 0, 0,(Dorsiflexion_amp*Math.PI/180), 0)
+									);
+			
 			
 		for (int i=0;i<5;i++){
 			
-			myAnkleTcp.move(linRel(0, 0, 0, 0, (Flexion_amp*Math.PI/180), 0));
-			myAnkleTcp.move(linRel(0, 0, 0, 0, -(Flexion_amp*Math.PI/180), 0));
-		
-			myAnkleTcp.move(linRel(0, 0, 0, 0, -(Dorsiflexion_amp*Math.PI/180), 0));
-		
-		myAnkleTcp.move(linRel(0, 0, 0, 0,(Dorsiflexion_amp*Math.PI/180), 0));
-			
+			myAnkleTcp.move(mc);
 		
 				
 		}
