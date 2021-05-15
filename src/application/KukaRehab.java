@@ -93,6 +93,19 @@ public class KukaRehab extends RoboticsAPIApplication {
 
 	private void myAdductionAbduction() {
 	
+		
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void myInversionEversion() {
+		myMainMenu();
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void myFlexionDorsiflexion() {
 		int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select flexion angle", "5", "10", "15","20","25","30");
 		switch (flex){
 		case 0:Flexion_amp=5;
@@ -112,21 +125,8 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 4:Dorsiflexion_amp=25;
 		case 5:Dorsiflexion_amp=30;
 		case 6:myMainMenu();
-		}
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void myInversionEversion() {
-		myMainMenu();
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void myFlexionDorsiflexion() {
-		myMainMenu();
 		// TODO Auto-generated method stub
 		
 	}
 	
-	}
+	}}
