@@ -110,24 +110,37 @@ public class KukaRehab extends RoboticsAPIApplication {
 		Flexion_amp=0;
 		int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select flexion angle", "5", "10", "15","20","25","30","Exit");
 		switch (flex){
-		case 0:Flexion_amp=5;
-		case 1:Flexion_amp=10;
-		case 2:Flexion_amp=15;
-		case 3:Flexion_amp=20;
-		case 4:Flexion_amp=25;
-		case 5:Flexion_amp=30;
+		case 0:{Flexion_amp=5;break;
+		}
+		case 1:{Flexion_amp=10;break;
+		}
+		case 2:{Flexion_amp=15;break;
+		}
+		case 3:{Flexion_amp=20;break;
+		}
+		case 4:{Flexion_amp=25;break;
+		}
+		case 5:{Flexion_amp=30;break;
+		}
 		case 6:break;
 		}
 		
 		if (Flexion_amp!=0){
 		int dorsi=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select dorsiflexion angle", "5", "10", "15","20","25","30","Ëxit");
 		switch (dorsi){
-		case 0:Dorsiflexion_amp=5;
-		case 1:Dorsiflexion_amp=10;
-		case 2:Dorsiflexion_amp=15;
-		case 3:Dorsiflexion_amp=20;
-		case 4:Dorsiflexion_amp=25;
-		case 5:Dorsiflexion_amp=30;
+		case 0:{Dorsiflexion_amp=5;
+		break;
+		}
+		case 1:{Dorsiflexion_amp=10;break;
+		}
+		case 2:{Dorsiflexion_amp=15;break;
+		}
+		case 3:{Dorsiflexion_amp=20;break;
+		}
+		case 4:{Dorsiflexion_amp=25;break;
+		}
+		case 5:{Dorsiflexion_amp=30;break;
+		}
 		case 6:break;}
 		
 	
@@ -138,9 +151,9 @@ public class KukaRehab extends RoboticsAPIApplication {
 		
 		for (int i=0;i<5;i++){
 		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
-		myAnkleTcp.move(ptp(getApplicationData().getFrame("/Mount_patient")));
+		myAnkleTcp.move(linRel(0, 0, 0, 0, (-Flexion_amp)*Math.PI/180, 0));
 		myAnkleTcp.move(linRel(0, 0, 0, 0, (-Dorsiflexion_amp)*Math.PI/180, 0));
-		myAnkleTcp.move(ptp(getApplicationData().getFrame("/Mount_patient")));
+		myAnkleTcp.move(linRel(0, 0, 0, 0, (Dorsiflexion_amp)*Math.PI/180, 0));
 		
 		}
 			//myAnkleTcp.move(linRel(0,0,0,10,0,0));
@@ -151,8 +164,8 @@ public class KukaRehab extends RoboticsAPIApplication {
 		
 		// TODO Auto-generated method stub
 		
-	}
+	}}
 		 
-	}
+		
 	
 	}
