@@ -71,6 +71,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		
 		myAnkleTcp.move(ptp(getApplicationData().getFrame("/Mount_patient")));
+		
 		myMainMenu();
 		
 		}
@@ -158,15 +159,15 @@ public class KukaRehab extends RoboticsAPIApplication {
 			getLogger().info("Flexion = "+Flexion_amp+ "Dorsifelxion = " +Dorsiflexion_amp);
 		
 			
-		//for (int i=0;i<5;i++){
+		for (int i=0;i<5;i++){
 			
-		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
-		getLogger().info("Flex");
-			//myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
-			//getLogger().info("back");
+		myAnkleTcp.move(linRel(0, 0, 0, 0, -(Dorsiflexion_amp*Math.PI/180), 0));
+		
+			myAnkleTcp.move(linRel(0, 0, 0, 0,(Dorsiflexion_amp*Math.PI/180), 0));
+			
 		
 				
-	//	}
+		}
 		}
 				
 	}}
