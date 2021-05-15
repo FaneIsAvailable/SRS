@@ -16,6 +16,7 @@ import com.kuka.roboticsAPI.geometricModel.math.Transformation;
 import com.kuka.roboticsAPI.motionModel.MotionBatch;
 import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 
+import com.kuka.generated.ioAccess.MediaFlangeIOGroup;
 /**
  * Implementation of a robot application.
  * <p>
