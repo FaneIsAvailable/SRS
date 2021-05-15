@@ -106,6 +106,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 	}
 
 	private void myFlexionDorsiflexion() {
+		Flexion_amp=0;
 		int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select flexion angle", "5", "10", "15","20","25","30");
 		switch (flex){
 		case 0:Flexion_amp=5;
@@ -116,6 +117,8 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 5:Flexion_amp=30;
 		case 6:myMainMenu();
 		}
+		
+		if (Flexion_amp!=0){
 		int dorsi=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select dorsiflexion angle", "5", "10", "15","20","25","30");
 		switch (dorsi){
 		case 0:Dorsiflexion_amp=5;
@@ -124,7 +127,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 3:Dorsiflexion_amp=20;
 		case 4:Dorsiflexion_amp=25;
 		case 5:Dorsiflexion_amp=30;
-		case 6:myMainMenu();
+		case 6:myMainMenu();}
 		// TODO Auto-generated method stub
 		
 	}
