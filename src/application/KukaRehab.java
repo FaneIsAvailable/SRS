@@ -10,6 +10,7 @@ import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
 import com.kuka.roboticsAPI.geometricModel.World;
+import com.kuka.roboticsAPI.geometricModel.math.Transformation;
 import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 
 /**
@@ -129,9 +130,11 @@ public class KukaRehab extends RoboticsAPIApplication {
 		case 5:Dorsiflexion_amp=30;
 		case 6:break;}
 		
+		
+		myLBR.move(linRel(Transformation.ofDeg(10, 10, 10, 10, 0, 0),getApplicationData().getFrame("/Mount_patient")));
 		//if (Flexion_amp!=0 && Dorsiflexion_amp!=0)
 		//for (int i=1;i<=5;i++){
-			myAnkleTcp.move(linRel(0,0,0,10,0,0));
+			//myAnkleTcp.move(linRel(0,0,0,10,0,0));
 		//	myAnkleTcp.move(linRel(0,0,0,-Flexion_amp,0,0));
 			//myAnkleTcp.move(linRel(0,0,0,Dorsiflexion_amp,0,0));
 			//myAnkleTcp.move(linRel(0,0,0,-Dorsiflexion_amp,0,0));
