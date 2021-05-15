@@ -61,7 +61,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 		myAnkle=getApplicationData().createFromTemplate("Kuka_ankle_tool");
 		myAnkleTcp=myAnkle.getFrame("Ankle_TCP");
 		myAnkle.attachTo(myLBR.getFlange());
-	
+		
 	}
 
 	@Override
@@ -157,20 +157,17 @@ public class KukaRehab extends RoboticsAPIApplication {
 		//myLBR.move(linRel(Transformation.ofDeg(10, 10, 10, 10, 0, 0),getApplicationData().getFrame("/Mount_patient")));
 		if (Flexion_amp!=0 && Dorsiflexion_amp!=0){
 			getLogger().info("Flexion = "+Flexion_amp+ "Dorsifelxion = " +Dorsiflexion_amp);
-			MotionBatch mc= new MotionBatch(
-					linRel(0, 0, 0, 0, (Flexion_amp*Math.PI/180), 0),
-					linRel(0, 0, 0, 0, -(Flexion_amp*Math.PI/180), 0),
-					linRel(0, 0, 0, 0, -(Dorsiflexion_amp*Math.PI/180), 0),
-					linRel(0, 0, 0, 0,(Dorsiflexion_amp*Math.PI/180), 0)
-									);
 			
+			myAnkleTcp.move(linRel(0, 0, 0, 0, (Flexion_amp*Math.PI/180), 0));
 			
 		for (int i=0;i<5;i++){
-			
-			myAnkleTcp.move(mc);
+			myAnkleTcp.move(linRel(0, 0, 0, 0, -((Flexion_amp+Dorsiflexion_amp)*Math.PI/180), 0));
+			myAnkleTcp.move(linRel(0, 0, 0, 0, ((Flexion_amp+Dorsiflexion_amp)*Math.PI/180), 0));
+				
 		
 				
 		}
+		myAnkleTcp.move(linRel(0, 0, 0, 0, -(Flexion_amp*Math.PI/180), 0));
 		}
 				
 	}}
