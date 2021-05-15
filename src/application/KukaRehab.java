@@ -66,19 +66,22 @@ public class KukaRehab extends RoboticsAPIApplication {
 			switch (resp){
 			case 0:{
 				getLogger().info("Perform Flexion/Dorsiflexion");
-				myFlexionDorsiflexion();}
+				myFlexionDorsiflexion();
+				break;}
 			case 1:{
 				getLogger().info("Perform Inversion/Eversion");
-				myInversionEversion();}
+				myInversionEversion();
+				break;}
 			case 2:{
 				getLogger().info("Perform Adduction/Abduction");
-				myAdductionAbduction();}
-			case 3:
+				myAdductionAbduction();
+				break;}
+			case 3:{
 				getLogger().info("Exiting");
-			
+				break;}
 			}
 		}
-		while (0!=resp);
+		while (3!=resp);
 		
 	}
 
