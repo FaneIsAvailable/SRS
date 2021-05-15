@@ -67,7 +67,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 	@Override
 	public void run() {
 		// your application execution starts here
-		led.setLEDBlue(false);
+	
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		
 		myAnkleTcp.move(ptp(getApplicationData().getFrame("/Mount_patient")));
@@ -159,12 +159,12 @@ public class KukaRehab extends RoboticsAPIApplication {
 		
 			
 		for (int i=0;i<5;i++){
-			led.setLEDBlue(true);
+			
 		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
+		getLogger().info("Flex");
+			myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
+			getLogger().info("back");
 		
-		led.setLEDBlue(true);
-		myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
-		led.setLEDBlue(false);
 				
 		}
 		}
