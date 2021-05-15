@@ -104,14 +104,117 @@ public class KukaRehab extends RoboticsAPIApplication {
 	private void myAdductionAbduction() {
 	
 		
+    Abduction_amp=Abduction_amp=0;
+int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select Abduction angle", "5", "10", "15","20","25","30","35","40","45","Exit");
+		switch (flex){
+		case 0:{Abduction_amp=5;break;
+		}
+		case 1:{Abduction_amp=10;break;
+		}
+		case 2:{Abduction_amp=15;break;
+		}
+		case 3:{Abduction_amp=20;break;
+		}
+		case 4:{Abduction_amp=25;break;
+		}
+		case 5:{Abduction_amp=30;break;
+		}
+		case 6:{Abduction_amp=35;break;
+		}
+		case 7:{Abduction_amp=40;break;
+		}
+		case 8:{Abduction_amp=45;break;
+		}
+		case 9:break;
+		}
 		
-		// TODO Auto-generated method stub
+		if (Abduction_amp!=0){
+		int dorsi=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select Adduction angle", "5", "10", "15","20","25","30","35","40","45","Exit");
+		switch (dorsi){
+		case 0:{Adduction_amp=5;break;
+		}
+		case 1:{Adduction_amp=10;break;
+		}
+		case 2:{Adduction_amp=15;break;
+		}
+		case 3:{Adduction_amp=20;break;
+		}
+		case 4:{Adduction_amp=25;break;
+		}
+		case 5:{Adduction_amp=30;break;
+		}
+		case 6:{Adduction_amp=35;break;
+		}
+		case 7:{Adduction_amp=40;break;
+		}
+		case 8:{Adduction_amp=45;break;
+		}
+		case 9:break;
+		}
+	
+		
+		
+		if (Abduction_amp!=0 && Adduction_amp!=0){
+			getLogger().info("Abduction = "+Abduction_amp+ "Adduction = " +Adduction_amp);
+			
+			myAnkleTcp.move(linRel(0, 0, 0, (Adduction_amp*Math.PI/180), 0,0));
+			
+		for (int i=0;i<5;i++){
+			myAnkleTcp.move(linRel(0, 0, 0,  -((Adduction_amp+Abduction_amp)*Math.PI/180), 0,0));
+			myAnkleTcp.move(linRel(0, 0, 0,  ((Adduction_amp+Abduction_amp)*Math.PI/180), 0,0));
+			}
+		myAnkleTcp.move(linRel(0, 0, 0, -(Adduction_amp*Math.PI/180), 0,0));
+		}
+				
+	}
 		
 	}
 
 	private void myInversionEversion() {
 		
-		// TODO Auto-generated method stub
+		Inversion_amp=0;
+		int flex=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select Inversion angle", "5", "10", "15","20","Exit");
+		switch (flex){
+		case 0:{Inversion_amp=5;break;
+		}
+		case 1:{Inversion_amp=10;break;
+		}
+		case 2:{Inversion_amp=15;break;
+		}
+		case 3:{Inversion_amp=20;break;
+		}
+		case 4:break;
+		}
+		
+		if (Inversion_amp!=0){
+		int dorsi=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select dorsiflexion angle", "5", "10", "15","20","Ëxit");
+		switch (dorsi){
+		case 0:{Eversion_amp=5;
+		break;
+		}
+		case 1:{Eversion_amp=10;break;
+		}
+		case 2:{Eversion_amp=15;break;
+		}
+		case 3:{Eversion_amp=20;break;
+		}
+		
+		case 4:break;}
+			
+		
+		if (Inversion_amp!=0 && Eversion_amp!=0){
+			getLogger().info("Inversion = "+Inversion_amp+ "Eversion = " +Eversion_amp);
+			
+			myAnkleTcp.move(linRel(0, 0, 0, 0,0,(Inversion_amp*Math.PI/180)));
+			
+		for (int i=0;i<5;i++){
+			myAnkleTcp.move(linRel(0, 0, 0, 0,0, -((Inversion_amp+Eversion_amp)*Math.PI/180)));
+			myAnkleTcp.move(linRel(0, 0, 0, 0,0, ((Inversion_amp+Eversion_amp)*Math.PI/180)));
+			}
+		myAnkleTcp.move(linRel(0, 0, 0, 0,0,(Inversion_amp*Math.PI/180)));
+		}
+				
+	}
 		
 	}
 
@@ -163,14 +266,12 @@ public class KukaRehab extends RoboticsAPIApplication {
 		for (int i=0;i<5;i++){
 			myAnkleTcp.move(linRel(0, 0, 0, 0, -((Flexion_amp+Dorsiflexion_amp)*Math.PI/180), 0));
 			myAnkleTcp.move(linRel(0, 0, 0, 0, ((Flexion_amp+Dorsiflexion_amp)*Math.PI/180), 0));
-				
-		
-				
-		}
+			}
 		myAnkleTcp.move(linRel(0, 0, 0, 0, -(Flexion_amp*Math.PI/180), 0));
 		}
 				
-	}}
+	}
+		}
 		 
 		
 	
