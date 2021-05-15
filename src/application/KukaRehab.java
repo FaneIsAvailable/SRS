@@ -2,6 +2,8 @@ package application;
 
 
 import javax.inject.Inject;
+
+import com.kuka.generated.ioAccess.MediaFlangeIOGroup;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
@@ -11,6 +13,7 @@ import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
 import com.kuka.roboticsAPI.geometricModel.World;
 import com.kuka.roboticsAPI.geometricModel.math.Transformation;
+import com.kuka.roboticsAPI.motionModel.MotionBatch;
 import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 
 /**
@@ -45,6 +48,7 @@ public class KukaRehab extends RoboticsAPIApplication {
 	private int Eversion_amp;
 	private int Adduction_amp;
 	private int Abduction_amp;
+	private MediaFlangeIOGroup led;
 
 	@Override
 	public void initialize() {
@@ -55,11 +59,13 @@ public class KukaRehab extends RoboticsAPIApplication {
 		myAnkle=getApplicationData().createFromTemplate("Kuka_ankle_tool");
 		myAnkleTcp=myAnkle.getFrame("Ankle_TCP");
 		myAnkle.attachTo(myLBR.getFlange());
+		led=new MediaFlangeIOGroup(myController);
 	}
 
 	@Override
 	public void run() {
 		// your application execution starts here
+		led.setLEDBlue(false);
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		
 		myAnkleTcp.move(ptp(getApplicationData().getFrame("/Mount_patient")));
@@ -149,12 +155,17 @@ public class KukaRehab extends RoboticsAPIApplication {
 		if (Flexion_amp!=0 && Dorsiflexion_amp!=0){
 			getLogger().info("Flexion = "+Flexion_amp+ "Dorsifelxion = " +Dorsiflexion_amp);
 		
+			
 		for (int i=0;i<5;i++){
+			led.setLEDBlue(true);
 		myAnkleTcp.move(linRel(0, 0, 0, 0, Flexion_amp*Math.PI/180, 0));
+		
+		led.setLEDBlue(true);
 		myAnkleTcp.move(linRel(0, 0, 0, 0,-(Flexion_amp*Math.PI/180), 0));
-		
-		
-		}}
+		led.setLEDBlue(false);
+				
+		}
+		}
 				
 	}}
 		 
