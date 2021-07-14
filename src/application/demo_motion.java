@@ -98,7 +98,7 @@ public class demo_motion extends RoboticsAPIApplication {
 		int res2=0;
 		ForceCondition condf1=ForceCondition.createSpatialForceCondition(myWorld, 1);
 		
-		IMotionContainer mc= myLBR.move(ptp(getApplicationData().getFrame("/P01")).setJointVelocityRel(0.5).breakWhen(condf1));
+		IMotionContainer mc= myLBR.move(ptp(getApplicationData().getFrame("/P201")).setJointVelocityRel(0.5).breakWhen(condf1));
 //		if (mc.hasFired(condf1)){
 //			res2=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION, "Pleaase select action", "Exit", "Continue");
 //			switch (res2) {
@@ -114,17 +114,17 @@ public class demo_motion extends RoboticsAPIApplication {
 //			}
 //		}
 		MotionBatch ntm =new MotionBatch(
-				ptp(getApplicationData().getFrame("/P100")),
-				ptp(getApplicationData().getFrame("/P101")),
-				ptp(getApplicationData().getFrame("/P102")),
-				ptp(getApplicationData().getFrame("/P103")),
-				ptp(getApplicationData().getFrame("/P104")),
-				ptp(getApplicationData().getFrame("/P105")),
-				ptp(getApplicationData().getFrame("/P106")),
-				ptp(getApplicationData().getFrame("/P107")),
-				ptp(getApplicationData().getFrame("/P108")),
-				ptp(getApplicationData().getFrame("/P109")),
-				ptp(getApplicationData().getFrame("/P110"))
+				ptp(getApplicationData().getFrame("/P300")),
+				ptp(getApplicationData().getFrame("/P301")),
+				ptp(getApplicationData().getFrame("/P302")),
+				ptp(getApplicationData().getFrame("/P303")),
+				ptp(getApplicationData().getFrame("/P304")),
+				ptp(getApplicationData().getFrame("/P305")),
+				ptp(getApplicationData().getFrame("/P306")),
+				ptp(getApplicationData().getFrame("/P307")),
+				ptp(getApplicationData().getFrame("/P308")),
+				ptp(getApplicationData().getFrame("/P309")),
+				ptp(getApplicationData().getFrame("/P310"))
 				);
 	
 	}
