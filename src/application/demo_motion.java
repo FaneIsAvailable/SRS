@@ -1,27 +1,27 @@
 package application;
 
 
-import javax.inject.Inject;
+import java.util.concurrent.TimeUnit;
+
+import com.kuka.common.ThreadUtil;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 
 import com.kuka.roboticsAPI.conditionModel.ForceCondition;
+import com.kuka.roboticsAPI.conditionModel.ICallbackAction;
+import com.kuka.roboticsAPI.conditionModel.ICondition;
+import com.kuka.roboticsAPI.conditionModel.JointTorqueCondition;
 import com.kuka.roboticsAPI.controllerModel.Controller;
+import com.kuka.roboticsAPI.deviceModel.JointEnum;
 import com.kuka.roboticsAPI.deviceModel.LBR;
-import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
+import com.kuka.roboticsAPI.deviceModel.PositionInformation;
+import com.kuka.roboticsAPI.executionModel.IFiredTriggerInfo;
+import com.kuka.roboticsAPI.geometricModel.CartDOF;
+import com.kuka.roboticsAPI.geometricModel.Frame;
 import com.kuka.roboticsAPI.geometricModel.World;
 import com.kuka.roboticsAPI.geometricModel.math.CoordinateAxis;
-import com.kuka.roboticsAPI.geometricModel.math.CoordinateDirection;
 import com.kuka.roboticsAPI.motionModel.IMotionContainer;
-import com.kuka.roboticsAPI.motionModel.MotionBatch;
-import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
-import com.kuka.roboticsAPI.uiModel.userKeys.IUserKey;
-import com.kuka.roboticsAPI.uiModel.userKeys.IUserKeyBar;
-import com.kuka.roboticsAPI.uiModel.userKeys.IUserKeyListener;
-import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyAlignment;
-import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyEvent;
-import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyLED;
-import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyLEDSize;
+import com.kuka.roboticsAPI.motionModel.controlModeModel.CartesianImpedanceControlMode;
 
 /**
  * Implementation of a robot application.
@@ -36,98 +36,109 @@ import com.kuka.roboticsAPI.uiModel.userKeys.UserKeyLEDSize;
  * <b>It is imperative to call <code>super.dispose()</code> when overriding the 
  * {@link RoboticsAPITask#dispose()} method.</b> 
  * 
- * @see UseRoboticsAPIContext
  * @see #initialize()
  * @see #run()
  * @see #dispose()
  */
 public class demo_motion extends RoboticsAPIApplication {
-	@Inject
-	private Controller myController;
-	private LBR myLBR;
-	private ObjectFrame myWorld;
-	@Override
+	private Controller kuka_Sunrise_Cabinet_1;
+	private LBR lbr;
+	private IMotionContainer mcSense, mcBreak;
+	private ForceCondition forceWorldZ;
+	private CartesianImpedanceControlMode impModeHard;
+	
 	public void initialize() {
-		// initialize your application here
-		myController = getController("KUKA_Sunrise_Cabinet_1");
-		myLBR = (LBR) getDevice(myController,
-				"LBR_iiwa_7_R800_1");
-		myWorld = World.Current.getRootFrame();
+		kuka_Sunrise_Cabinet_1 = getController("KUKA_Sunrise_Cabinet_1");
+		lbr = (LBR) getDevice(kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
+		forceCond();
+		impMode();
 	}
+	
+	public void impMode(){
 
-	@Override
+		impModeHard = new CartesianImpedanceControlMode();
+		impModeHard.parametrize(CartDOF.X).setStiffness(5000);
+		impModeHard.parametrize(CartDOF.Y).setStiffness(5000);
+		impModeHard.parametrize(CartDOF.Z).setStiffness(5000);
+		impModeHard.parametrize(CartDOF.A).setStiffness(300);
+		impModeHard.parametrize(CartDOF.B).setStiffness(300);
+		impModeHard.parametrize(CartDOF.C).setStiffness(300);
+		impModeHard.parametrize(CartDOF.ALL).setDamping(0.9);
+	}
+	
+	public void forceCond(){
+		forceWorldZ = ForceCondition.createNormalForceCondition(lbr.getFrame("Frame"), World.Current.getRootFrame(), CoordinateAxis.Z, 25.0);
+	}
+	
 	public void run() {
-		// your application execution starts here
-		IUserKeyBar stopBut = getApplicationUI().createUserKeyBar("Pause");
-		IUserKeyListener listener=new IUserKeyListener() {
-			
-			@Override
-			public void onKeyEvent(IUserKey key, UserKeyEvent event) {
-				// TODO Auto-generated method stub
-				if (event==UserKeyEvent.FirstKeyDown){
-					getLogger().info("buton apasat");
-				}
-				
-			}
-		};
-		IUserKey start_stop = stopBut.addDoubleUserKey(0, listener, true);
-		start_stop.setText(UserKeyAlignment.TopMiddle, "On");
-		start_stop.setLED(UserKeyAlignment.Middle, UserKeyLED.Grey,
-				UserKeyLEDSize.Small);
-		stopBut.publish();
-		int res=0;
-		getLogger().info("Starting FORCE DEMO");
-		myLBR.move(ptpHome());
-		do  {
-			res=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION, "Pleaase select action", "Exit", "Demo torq");
-			switch (res) {
-			case 0:
-				getLogger().info("Program terminated-exit");
-				break;
-			case 1:
-				getLogger().info("Running demo application");
-				demotrq();
-				break;
-				default :
-					getLogger().info("No action selected");
-					break;
-			}
-		} while (0!=res);
+		sensitivityICallBack();
 	}
-	private void demotrq() {
-		int res2=0;
-		ForceCondition condf1=ForceCondition.createSpatialForceCondition(myWorld, 1);
 		
-		IMotionContainer mc= myLBR.move(ptp(getApplicationData().getFrame("/P201")).setJointVelocityRel(0.5).breakWhen(condf1));
-//		if (mc.hasFired(condf1)){
-//			res2=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION, "Pleaase select action", "Exit", "Continue");
-//			switch (res2) {
-//			case 0:
-//				getLogger().info("Program terminated-exit");
-//				break;
-//			case 1:
-//				getLogger().info("continue");
-//			
-//				default :
-//					getLogger().info("No action selected");
-//					break;
-//			}
-//		}
-		MotionBatch ntm =new MotionBatch(
-				ptp(getApplicationData().getFrame("/P300")),
-				ptp(getApplicationData().getFrame("/P301")),
-				ptp(getApplicationData().getFrame("/P302")),
-				ptp(getApplicationData().getFrame("/P303")),
-				ptp(getApplicationData().getFrame("/P304")),
-				ptp(getApplicationData().getFrame("/P305")),
-				ptp(getApplicationData().getFrame("/P306")),
-				ptp(getApplicationData().getFrame("/P307")),
-				ptp(getApplicationData().getFrame("/P308")),
-				ptp(getApplicationData().getFrame("/P309")),
-				ptp(getApplicationData().getFrame("/P310"))
-				);
+	//***********************************   Sensitivity ICallBack   ************************************
 	
-	}
-	
+		public void sensitivityICallBack(){
+			
+			ICallbackAction actionYDir = new ICallbackAction() {
+				
+				@Override
+				public void onTriggerFired(IFiredTriggerInfo triggerInformation) {
+					triggerInformation.getMotionContainer().cancel();
+					PositionInformation trigPosInf = triggerInformation.getPositionInformation();
+					Frame trigPos = trigPosInf.getCurrentCartesianPosition();
+					Frame targetPos = triggerInformation.getPositionInformation().getCommandedCartesianPosition();
+					getLogger().info("Break the robot by sensing collision.");
+					getLogger().info("TriggPos: "+trigPos);
+					getLogger().info("Push the tool in World Z direction to continue!");
+					mcBreak = lbr.getFlange().move(positionHold(impModeHard, -1, TimeUnit.SECONDS).breakWhen(forceWorldZ));
+					if (mcBreak.hasFired(forceWorldZ)){
+						getLogger().info("Restart movement");
+						getLogger().info("DestPos: "+targetPos);
+						ThreadUtil.milliSleep(1000);
+					}
+				}
+			};
+			
+				JointTorqueCondition condA1 = new JointTorqueCondition(JointEnum.J1, -3, 3);
+				JointTorqueCondition condA2 = new JointTorqueCondition(JointEnum.J2, -3, 3);
+				JointTorqueCondition condA3 = new JointTorqueCondition(JointEnum.J3, -5, 5);
+				JointTorqueCondition condA4 = new JointTorqueCondition(JointEnum.J4, -5, 5);
+				JointTorqueCondition condA5 = new JointTorqueCondition(JointEnum.J5, -5, 5);
+				JointTorqueCondition condA6 = new JointTorqueCondition(JointEnum.J6, -5, 5);
+				JointTorqueCondition condA7 = new JointTorqueCondition(JointEnum.J7, -5, 5);
+				ICondition complexCond = condA1.or(condA2, condA3, condA4, condA5, condA6, condA7);
+			
+			while (true){
+				//lbr.move(ptp(getApplicationData().getFrame("/Base/P1")).setJointVelocityRel(0.2));
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P1"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P1")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P2"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P2")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P3"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P3")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P4"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P4")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P5"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P5")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P6"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P6")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+				while (!lbr.getCurrentCartesianPosition(lbr.getFlange()).isCloseTo(getApplicationData().getFrame("/Base/P1"), 5, Math.toRadians(3))){
+					mcSense = lbr.move(lin(getApplicationData().getFrame("/Base/P1")).setCartVelocity(77).triggerWhen(complexCond, actionYDir));
+				}
+			}
+		}
 
+
+	/**
+	 * Auto-generated method stub. Do not modify the contents of this method.
+	 */
+	public static void main(String[] args) {
+		demo_motion app = new demo_motion();
+		app.runApplication();
+	}
 }
