@@ -3,6 +3,8 @@ package backgroundTask;
 
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;
+
+import com.kuka.common.ThreadUtil;
 import com.kuka.roboticsAPI.applicationModel.tasks.CycleBehavior;
 import com.kuka.roboticsAPI.applicationModel.tasks.RoboticsAPICyclicBackgroundTask;
 import com.kuka.roboticsAPI.controllerModel.Controller;
@@ -37,14 +39,17 @@ public class ReadTorque extends RoboticsAPICyclicBackgroundTask {
 		lbr = (LBR) getDevice(Kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
 		
 		// initialize your task here
-		initializeCyclic(0, 100, TimeUnit.MILLISECONDS,
-				CycleBehavior.BestEffort);
+		//initializeCyclic(0, 100, TimeUnit.MILLISECONDS,
+			//	CycleBehavior.BestEffort);
 	}
 
 	@Override
 	public void runCyclic() {
 		// your task execution starts here
+		do{
 		allforce=lbr.getExternalForceTorque(lbr.getFlange());
+		ThreadUtil.milliSleep(100);
 		getLogger().info(allforce.getForce().toString());
+		}while (1==1);
 	}
 }

@@ -2,6 +2,9 @@ package application;
 
 
 import javax.inject.Inject;
+
+import backgroundTask.ReadTorque;
+
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 import com.kuka.roboticsAPI.deviceModel.LBR;
@@ -31,14 +34,17 @@ public class Pierce extends RoboticsAPIApplication {
 	private LBR lBR_iiwa_7_R800_1;
 	private Tool acu_1;
 	private ObjectFrame tcpAc1;
+	private ReadTorque redf;
+	
 	
 	@Override
 	public void initialize() {
 		// initialize your application here
 		acu_1=getApplicationData().createFromTemplate("Ac_nou");
 		tcpAc1=acu_1.getFrame("Tcp_ac_nou");
+		redf=new ReadTorque();
+		redf.run();
 		
-
 	}
 
 	@Override
@@ -46,8 +52,8 @@ public class Pierce extends RoboticsAPIApplication {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		acu_1.attachTo(lBR_iiwa_7_R800_1.getFlange());
-		acu_1.move(ptp(getApplicationData().getFrame("/punct_deasupra_gel")));
 		
+		acu_1.move(ptp(getApplicationData().getFrame("/punct_deasupra_gel")));
 		acu_1.move(lin(getApplicationData().getFrame("/gelu/Punct_gel")));
 	}
 }
