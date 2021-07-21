@@ -828,7 +828,7 @@
             </additionalInformation>
             <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="0.0" cogY="0.0" cogZ="0.0" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="0.0"/>
         </toolTemplate>
-        <toolTemplate class="" name="Ac_nou">
+        <toolTemplate class="" defaultMotionFrameRef="/Tcp_ac_nou" name="Ac_nou">
             <frames>
                 <frame id="_6c5718b2-29ff-4e68-8883-eb224df994a5" name="Tcp_ac_nou">
                     <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="260.76884694460057"/>
@@ -837,7 +837,7 @@
             <additionalInformation>
                 <info key="ID" type="java.lang.String" value="5101627b-121a-402b-b44c-0ccbab14ab83"/>
             </additionalInformation>
-            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="0.0" cogY="0.0" cogZ="0.0" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="1.0"/>
+            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="0.0" cogY="0.0" cogZ="0.0" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="0.12"/>
         </toolTemplate>
     </objectTemplates>
     <processDataContainer>
