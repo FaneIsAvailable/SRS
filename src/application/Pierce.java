@@ -42,9 +42,6 @@ public class Pierce extends RoboticsAPIApplication {
 		// initialize your application here
 		acu_1=getApplicationData().createFromTemplate("Ac_nou");
 		tcpAc1=acu_1.getFrame("Tcp_ac_nou");
-		redf=new citeste_senzor();
-		redf.initialize();
-		redf.run();
 		
 	}
 
@@ -58,6 +55,6 @@ public class Pierce extends RoboticsAPIApplication {
 		acu_1.move(lin(getApplicationData().getFrame("/gelu/Punct_gel")));
 	}
 	public void dispose(){
-		redf.dispose();
+		
 	}
 }
