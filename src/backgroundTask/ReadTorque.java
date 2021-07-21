@@ -35,6 +35,7 @@ public class ReadTorque extends RoboticsAPICyclicBackgroundTask {
 
 	@Override
 	public void initialize() {
+		getLogger().warn(TimeUnit.DAYS.toString()+TimeUnit.HOURS.toString()+TimeUnit.MINUTES.toString()+TimeUnit.SECONDS.toString());
 		Kuka_Sunrise_Cabinet_1 = getController("KUKA_Sunrise_Cabinet_1");
 		lbr = (LBR) getDevice(Kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
 		
