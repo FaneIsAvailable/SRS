@@ -5,6 +5,7 @@ import javax.inject.Inject;
 
 import backgroundTask.ReadTorque;
 
+import com.kuka.common.ThreadUtil;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 import com.kuka.roboticsAPI.deviceModel.LBR;
@@ -77,7 +78,20 @@ public class Pierce extends RoboticsAPIApplication {
 		
 	}
 	private void do_pulpa() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub\
+		acu_1.move(ptp(getApplicationData().getFrame("/Punct_deasupra_pulpa")));
+		int count=0;
+		do 
+		{
+		acu_1.move(linRel(0, 0, 35)); 
+		ThreadUtil.milliSleep(1000);
+		acu_1.move(linRel(0, 0, -35));		
+		ThreadUtil.milliSleep(1000);
+		acu_1.move(linRel(0, 10, 0));
+		ThreadUtil.milliSleep(1000);
+        count=count+1;
+		}while (count<=5);
+		
 		
 	}
 
