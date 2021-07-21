@@ -30,21 +30,21 @@ import com.kuka.roboticsAPI.sensorModel.ForceSensorData;
 public class citeste_senzor extends RoboticsAPIApplication {
 	@Inject
 	private Controller Kuka_Sunrise_Cabinet_1;
-	private LBR lbr;
+	private LBR lBR_iiwa_7_R800_1;
 	ForceSensorData allforce;
 
 	@Override
 	public void initialize() {
 		// initialize your application here
 		Kuka_Sunrise_Cabinet_1 = getController("KUKA_Sunrise_Cabinet_1");
-		lbr = (LBR) getDevice(Kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
+		lBR_iiwa_7_R800_1 = (LBR) getDevice(Kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
 		
 	}
 
 	@Override
 	public void run() {
 		// your application execution starts here
-		allforce=lbr.getExternalForceTorque(lbr.getFlange());
+		allforce=lBR_iiwa_7_R800_1.getExternalForceTorque(lBR_iiwa_7_R800_1.getFlange());
 		getLogger().info(allforce.getForce().toString()+allforce.getTorque().toString());
 	}
 }
