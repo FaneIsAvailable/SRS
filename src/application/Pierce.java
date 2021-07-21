@@ -115,7 +115,7 @@ public class Pierce extends RoboticsAPIApplication {
 		ThreadUtil.milliSleep(1000);
 		acu_1.move(linRel(0, 0, -35));		
 		ThreadUtil.milliSleep(1000);
-		acu_1.move(linRel(0, -10, 0));
+		acu_1.move(linRel(0, 10, 0));
 		ThreadUtil.milliSleep(1000);
         count=count+1;
 		}while (count<5);
