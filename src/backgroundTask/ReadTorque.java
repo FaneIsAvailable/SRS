@@ -46,10 +46,9 @@ public class ReadTorque extends RoboticsAPICyclicBackgroundTask {
 	@Override
 	public void runCyclic() {
 		// your task execution starts here
-		do{
+		
 		allforce=lbr.getExternalForceTorque(lbr.getFlange());
-		ThreadUtil.milliSleep(100);
-		getLogger().info(allforce.getForce().toString());
-		}while (1==1);
-	}
+		getLogger().info(allforce.getForce().toString()+allforce.getTorque().toString());
+		
+}
 }
