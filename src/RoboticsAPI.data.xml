@@ -480,6 +480,13 @@
                 </redundancy>
             </redundancyData>
         </frame>
+        <frame id="_45d6c1c5-118a-4e1a-8c7f-9abd96390f36" name="gelu">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1626871959027"/>
+                <info key="UseAsBaseForJogging" type="java.lang.Boolean" value="true"/>
+            </additionalInformation>
+        </frame>
         <frame id="_9db56bd2-c878-4201-94dc-ff1ad115f007" name="P1004">
             <transformation a="0.12078241986659777" b="-0.05136323646346887" c="4.6483445296699834E-4" x="113.69060241077136" y="49.86988665237894" z="9.582211827492984"/>
             <additionalInformation>
@@ -839,13 +846,6 @@
             </additionalInformation>
             <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="0.0" cogY="0.0" cogZ="0.0" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="0.12"/>
         </toolTemplate>
-        <geometricObjectTemplate class="" name="gelu">
-            <frames>
-                <frame id="_3e8f406b-f39f-4ced-9e23-9d9cd9fe0c3d" name="gelu_frame">
-                    <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
-                </frame>
-            </frames>
-        </geometricObjectTemplate>
     </objectTemplates>
     <processDataContainer>
         <processData dataType="java.lang.String" defaultValue="iiwa" displayName="Robot Name" editableOnHmi="true" id="robot_name" value="iiwa"/>
