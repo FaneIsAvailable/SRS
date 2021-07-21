@@ -81,6 +81,9 @@ public class Pierce extends RoboticsAPIApplication {
 		// TODO Auto-generated method stub\
 		acu_1.move(ptp(getApplicationData().getFrame("/Punct_deasupra_pulpa")));
 		int count=0;
+		int count2=0;
+		do
+		{
 		do 
 		{
 		acu_1.move(linRel(0, 0, 35)); 
@@ -91,8 +94,10 @@ public class Pierce extends RoboticsAPIApplication {
 		ThreadUtil.milliSleep(1000);
         count=count+1;
 		}while (count<=5);
-		
-		
+		acu_1.move(linRel(10, 0, 0));
+		ThreadUtil.milliSleep(1000);
+		count2=count2+1;
+		}while (count2<=3);
 	}
 
 	private void do_gel() {
