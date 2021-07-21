@@ -487,6 +487,18 @@
                 <info key="UseAsBaseForJogging" type="java.lang.Boolean" value="true"/>
                 <info measurementMethod="Base3Point" timestamp="1626883149055" type="com.kuka.roboticsAPI.deviceModel.MeasurementInformation"/>
             </additionalInformation>
+            <frame id="_40866c4c-e889-4417-a67f-34dee05e9d47" name="Punct_gel">
+                <transformation a="0.0" b="0.0" c="0.0" x="50.0" y="50.0" z="10.0"/>
+                <additionalInformation>
+                    <info key="LastModificationTime" type="java.lang.Long" value="1626873263559"/>
+                </additionalInformation>
+            </frame>
+        </frame>
+        <frame id="_97b2c05a-b864-41b2-bab9-54097198e3ee" name="punct_deasupra_gel">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1626872898941"/>
+            </additionalInformation>
         </frame>
         <frame id="_9db56bd2-c878-4201-94dc-ff1ad115f007" name="P1004">
             <transformation a="0.12078241986659777" b="-0.05136323646346887" c="4.6483445296699834E-4" x="113.69060241077136" y="49.86988665237894" z="9.582211827492984"/>
