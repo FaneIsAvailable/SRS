@@ -2,14 +2,12 @@ package application;
 
 
 import javax.inject.Inject;
-
-import backgroundTask.ReadTorque;
-
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
+
+import com.kuka.roboticsAPI.controllerModel.Controller;
 import com.kuka.roboticsAPI.deviceModel.LBR;
-import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
-import com.kuka.roboticsAPI.geometricModel.Tool;
+import com.kuka.roboticsAPI.sensorModel.ForceSensorData;
 
 /**
  * Implementation of a robot application.
@@ -29,31 +27,24 @@ import com.kuka.roboticsAPI.geometricModel.Tool;
  * @see #run()
  * @see #dispose()
  */
-public class Pierce extends RoboticsAPIApplication {
+public class citeste_senzor extends RoboticsAPIApplication {
 	@Inject
-	private LBR lBR_iiwa_7_R800_1;
-	private Tool acu_1;
-	private ObjectFrame tcpAc1;
-	private citeste_senzor redf;
-	
-	
+	private Controller Kuka_Sunrise_Cabinet_1;
+	private LBR lbr;
+	ForceSensorData allforce;
+
 	@Override
 	public void initialize() {
 		// initialize your application here
-		acu_1=getApplicationData().createFromTemplate("Ac_nou");
-		tcpAc1=acu_1.getFrame("Tcp_ac_nou");
-		redf=new citeste_senzor();
-		redf.run();
+		Kuka_Sunrise_Cabinet_1 = getController("KUKA_Sunrise_Cabinet_1");
+		lbr = (LBR) getDevice(Kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
 		
 	}
 
 	@Override
 	public void run() {
 		// your application execution starts here
-		lBR_iiwa_7_R800_1.move(ptpHome());
-		acu_1.attachTo(lBR_iiwa_7_R800_1.getFlange());
-		
-		acu_1.move(ptp(getApplicationData().getFrame("/punct_deasupra_gel")));
-		acu_1.move(lin(getApplicationData().getFrame("/gelu/Punct_gel")));
+		allforce=lbr.getExternalForceTorque(lbr.getFlange());
+		getLogger().info(allforce.getForce().toString()+allforce.getTorque().toString());
 	}
 }
