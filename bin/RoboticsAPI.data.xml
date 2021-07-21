@@ -481,10 +481,11 @@
             </redundancyData>
         </frame>
         <frame id="_45d6c1c5-118a-4e1a-8c7f-9abd96390f36" name="gelu">
-            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <transformation a="1.5591432079438965" b="0.011326941283719666" c="-3.137191506649923" x="46.51602730797274" y="-690.2937017164913" z="-2.870283099932294"/>
             <additionalInformation>
-                <info key="LastModificationTime" type="java.lang.Long" value="1626871959027"/>
+                <info key="LastModificationTime" type="java.lang.Long" value="1626883149055"/>
                 <info key="UseAsBaseForJogging" type="java.lang.Boolean" value="true"/>
+                <info measurementMethod="Base3Point" timestamp="1626883149055" type="com.kuka.roboticsAPI.deviceModel.MeasurementInformation"/>
             </additionalInformation>
         </frame>
         <frame id="_9db56bd2-c878-4201-94dc-ff1ad115f007" name="P1004">
