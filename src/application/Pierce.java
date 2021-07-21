@@ -10,6 +10,7 @@ import static com.kuka.roboticsAPI.motionModel.BasicMotions.*;
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
+import com.kuka.roboticsAPI.uiModel.ApplicationDialogType;
 
 /**
  * Implementation of a robot application.
@@ -34,7 +35,7 @@ public class Pierce extends RoboticsAPIApplication {
 	private LBR lBR_iiwa_7_R800_1;
 	private Tool acu_1;
 	private ObjectFrame tcpAc1;
-	private citeste_senzor redf;
+	
 	
 	
 	@Override
@@ -51,9 +52,41 @@ public class Pierce extends RoboticsAPIApplication {
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		acu_1.attachTo(lBR_iiwa_7_R800_1.getFlange());
 		
+		int resp=0;
+		do {
+			resp=getApplicationUI().displayModalDialog(ApplicationDialogType.INFORMATION, "Select action",  "Exit", "Gel", "Pulpa");
+			switch (resp){
+			case 0:{
+				getLogger().info("gata");
+				break;
+			      }
+			case 1:{
+				getLogger().info("Ma duc in gelu");
+				do_gel();
+			      }
+			case 2:{
+				getLogger().info("Ma duc in pulpa");
+				do_pulpa();
+			     }
+		}
+		}
+		while (0!=resp);
+		
+		
+		
+		
+	}
+	private void do_pulpa() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void do_gel() {
+		// TODO Auto-generated method stub
 		acu_1.move(ptp(getApplicationData().getFrame("/punct_deasupra_gel")));
 		acu_1.move(lin(getApplicationData().getFrame("/gelu/Punct_gel")));
 	}
+
 	public void dispose(){
 		
 	}
