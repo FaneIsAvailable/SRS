@@ -831,8 +831,7 @@
         <toolTemplate class="" name="Ac_nou">
             <frames>
                 <frame id="_6c5718b2-29ff-4e68-8883-eb224df994a5" name="Tcp_ac_nou">
-                    <transformation a="0.0" b="0.0" c="0.0" x="2.63406202617827" y="-0.467359053829264" z="260.76884694460057"/>
-                    <measurementTranslation calculationError="4.420526210739803" method="XYZ4Point" timestamp="1626880515832"/>
+                    <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="260.76884694460057"/>
                 </frame>
             </frames>
             <additionalInformation>
