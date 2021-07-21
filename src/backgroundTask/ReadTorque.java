@@ -39,8 +39,8 @@ public class ReadTorque extends RoboticsAPICyclicBackgroundTask {
 		lbr = (LBR) getDevice(Kuka_Sunrise_Cabinet_1, "LBR_iiwa_7_R800_1");
 		
 		// initialize your task here
-		//initializeCyclic(0, 100, TimeUnit.MILLISECONDS,
-			//	CycleBehavior.BestEffort);
+		initializeCyclic(0, 100, TimeUnit.MILLISECONDS,
+				CycleBehavior.BestEffort);
 	}
 
 	@Override
