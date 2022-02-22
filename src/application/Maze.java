@@ -104,6 +104,7 @@ public class Maze extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		Frame[] pozes=new Frame[100];	
+		getLogger().info(led.toString());
 		//led.setLEDBlue(false);
 		int resp=0;
 		getLogger().info("Going Home");

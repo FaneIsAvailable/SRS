@@ -51,6 +51,11 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/SRS/KUKAJavaLib/com.kuka.connectivity.directServo_1.15.0.Con1-16-0_4-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="KUKAJavaLib/com.kuka.connectivity.fastRobotInterface_1.15.1.Con1-16-0_4.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SRS/KUKAJavaLib/com.kuka.connectivity.fastRobotInterface_1.15.1.Con1-16-0_4-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="KUKAJavaLib/com.kuka.connectivity.smartServo_1.16.0.Con1-16-0_4.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/SRS/KUKAJavaLib/com.kuka.connectivity.smartServo_1.16.0.Con1-16-0_4-javadoc.jar!/"/>
