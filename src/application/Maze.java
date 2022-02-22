@@ -157,8 +157,8 @@ public class Maze extends RoboticsAPIApplication {
 		mySphereTip.attachTo(myLbr.getFlange());
 		//HandGuidingMotion handguide=new HandGuidingMotion();
 		//mySphereTip.attachTo(myLbr.getFlange());
-	    sphere_TIP.move(ptp(getApplicationData().getFrame("/Small_Maze/PAboveStart")));
-		sphere_TIP.move(lin(getApplicationData().getFrame("/Small_Maze/PStart")));
+	    sphere_TIP.move(ptp(getApplicationData().getFrame("/PAboveStart")));
+		sphere_TIP.move(lin(getApplicationData().getFrame("/PStart")));
 		getLogger().info("Press Green Buton to Start");
 		while (!led.getUserButton()){
 	    	  ThreadUtil.milliSleep(100);
@@ -206,30 +206,30 @@ public class Maze extends RoboticsAPIApplication {
 	}
 	public void do_solo_small_maze(){
 		mySphereTip.attachTo(myLbr.getFlange());
-		sphere_TIP.move(ptp(getApplicationData().getFrame("/Small_Maze/PAboveStart")));
-		sphere_TIP.move(lin(getApplicationData().getFrame("/Small_Maze/PStart")));
+		sphere_TIP.move(ptp(getApplicationData().getFrame("/PAboveStart")));
+		sphere_TIP.move(lin(getApplicationData().getFrame("/PStart")));
 		MotionBatch mc= new MotionBatch(
-				lin(getApplicationData().getFrame("/Small_Maze/P1001")).setCartVelocity(10),
-				lin(getApplicationData().getFrame("/Small_Maze/P1002")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1003")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1004")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1005")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1006")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1007")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1008")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1009")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1010")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1011")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1012")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1013")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1014")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1015")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1016")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1017")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1018")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1019")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1020")),
-				lin(getApplicationData().getFrame("/Small_Maze/P1021"))			
+				lin(getApplicationData().getFrame("/P1001")).setCartVelocity(10),
+				lin(getApplicationData().getFrame("/P1002")),
+				lin(getApplicationData().getFrame("/P1003")),
+				lin(getApplicationData().getFrame("/P1004")),
+				lin(getApplicationData().getFrame("/P1005")),
+				lin(getApplicationData().getFrame("/P1006")),
+				lin(getApplicationData().getFrame("/P1007")),
+				lin(getApplicationData().getFrame("/P1008")),
+				lin(getApplicationData().getFrame("/P1009")),
+				lin(getApplicationData().getFrame("/P1010")),
+				lin(getApplicationData().getFrame("/P1011")),
+				lin(getApplicationData().getFrame("/P1012")),
+				lin(getApplicationData().getFrame("/P1013")),
+				lin(getApplicationData().getFrame("/P1014")),
+				lin(getApplicationData().getFrame("/P1015")),
+				lin(getApplicationData().getFrame("/P1016")),
+				lin(getApplicationData().getFrame("/P1017")),
+				lin(getApplicationData().getFrame("/P1018")),
+				lin(getApplicationData().getFrame("/P1019")),
+				lin(getApplicationData().getFrame("/P1020")),
+				lin(getApplicationData().getFrame("/P1021"))			
 								);
 		sphere_TIP.move(mc);
 	   sphere_TIP.move(linRel(0, 0, -20));
