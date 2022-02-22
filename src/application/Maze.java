@@ -139,7 +139,7 @@ public class Maze extends RoboticsAPIApplication {
 		sphere_TIP.move(ptp(getApplicationData().getFrame("/PAboveStart")));
 		sphere_TIP.move(lin(getApplicationData().getFrame("/PStart")));
 		getLogger().info("i= "+i);
-		getLogger().info(pozes[1].toString());
+		getLogger().info(pozes[i].toString());
 		getLogger().info("Press Green Buton to Start");
 		while (!led.getUserButton()){
 	    	  ThreadUtil.milliSleep(100);
