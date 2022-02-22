@@ -136,8 +136,8 @@ public class Maze extends RoboticsAPIApplication {
 		}  
 	public void teach_points(){
 		mySphereTip.attachTo(myLbr.getFlange());
-		sphere_TIP.move(ptp(getApplicationData().getFrame("/Small_Maze/PAboveStart")));
-		sphere_TIP.move(lin(getApplicationData().getFrame("/Small_Maze/PStart")));
+		sphere_TIP.move(ptp(getApplicationData().getFrame("/PAboveStart")));
+		sphere_TIP.move(lin(getApplicationData().getFrame("/PStart")));
 		getLogger().info("i= "+i);
 		getLogger().info(pozes[1].toString());
 		getLogger().info("Press Green Buton to Start");
