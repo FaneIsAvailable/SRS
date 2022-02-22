@@ -94,7 +94,7 @@ public class Maze extends RoboticsAPIApplication {
 	led=new MediaFlangeIOGroup(myController);
 	mySphereTip=getApplicationData().createFromTemplate("SphereTip");
 	sphere_TIP=mySphereTip.getFrame("sph_tip");	
-	//AbstractIO gb=led.getInput("UserButton");
+	AbstractIO gb=led.getInput("UserButton");
 	//BooleanIOCondition bc=new BooleanIOCondition(gb, true);
  
 	
