@@ -86,7 +86,7 @@ public class Maze extends RoboticsAPIApplication {
 	@Override
 	public void initialize() {
 			
-	//datarec=new DataRecorder("datas.txt", 100, TimeUnit.MILLISECONDS, 100);
+	datarec=new DataRecorder("datas.txt", 100, TimeUnit.MILLISECONDS, 100);
 	
 		// initialize your application here
 		myController = getController("KUKA_Sunrise_Cabinet_1");
