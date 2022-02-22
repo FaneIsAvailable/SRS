@@ -75,7 +75,7 @@ public class Maze extends RoboticsAPIApplication {
     private ICondition ic;
     private BooleanIOCondition bc;
     private IMotionContainer mc;
-    public int i;
+    public int i=0;
     private long nou,acum;
     private DataRecorder datarec;
     private ObjectFrame sphere_TIP;
