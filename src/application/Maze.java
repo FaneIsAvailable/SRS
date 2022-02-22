@@ -66,7 +66,7 @@ public class Maze extends RoboticsAPIApplication {
 	private Controller myController;
 	private Tool mySphereTip;
 	private Tool myDullTip;
-	MediaFlangeIOGroup ioFlange;
+	//private MediaFlangeIOGroup ioFlange;
 	//	private static final int stiffnessZ = 3500;
 //	private static final int stiffnessY = 500;
 //	private static final int stiffnessX = 500;
