@@ -49,6 +49,6 @@ public class led extends RoboticsAPIApplication {
 	public void run() {
 		// your application execution starts here
 		myLbr.move(ptpHome());
-		getLogger().info(io.toString());
+		io.setLEDBlue(true);
 	}
 }
