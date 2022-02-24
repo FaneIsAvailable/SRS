@@ -112,7 +112,7 @@ public class Maze extends RoboticsAPIApplication {
 		do {
 			resp=getApplicationUI().displayModalDialog(ApplicationDialogType.QUESTION, "What TODO", "Exit", "Solo Maze", "Play MazeEScape","Manual _tech");
 			switch (resp){
-			case 0: {
+			case 0: {	
 				getLogger().info("Exit");
 				break;}
 			case 1:{
