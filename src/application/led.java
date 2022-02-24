@@ -32,20 +32,23 @@ public class led extends RoboticsAPIApplication {
 	@Inject
 	private LBR myLbr;
 	private Controller myController;
-	private MediaFlangeIOGroup led;
+	private MediaFlangeIOGroup io;
+
+	
+
 
 	@Override
 	public void initialize() {
 		// initialize your application here
 		myController = getController("KUKA_Sunrise_Cabinet_1");
 		myLbr.getContext().getDeviceFromType(LBR.class);
-		led=new MediaFlangeIOGroup(myController);
+		io=new MediaFlangeIOGroup(myController);
 	}
 
 	@Override
 	public void run() {
 		// your application execution starts here
 		myLbr.move(ptpHome());
-		getLogger().info(led.toString());
+		getLogger().info(io.toString());
 	}
 }
