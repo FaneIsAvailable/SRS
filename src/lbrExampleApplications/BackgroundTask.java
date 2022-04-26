@@ -277,6 +277,7 @@ class BackgroundTask implements Runnable {
 			MatlabToolboxServer.directSmart_ServoMotionFlag=false;
 			}
 			// this.sendCommand(ack);
+			
 			MatlabToolboxServer.daCommand="";
 		}
 		else if(MatlabToolboxServer.daCommand.startsWith("DcSeCarExT_"))
@@ -303,7 +304,7 @@ class BackgroundTask implements Runnable {
 		}
 		else if(MatlabToolboxServer.daCommand.startsWith("DcSeCarEEfP_"))
 		{
-			boolean tempBool=getTheJoints(MatlabToolboxServer.daCommand);
+			boolean tempBool=getThePositions(MatlabToolboxServer.daCommand);
 			// MatlabToolboxServer.printMessage(MatlabToolboxServer.daCommand);
 			if(tempBool==false)
 			{
