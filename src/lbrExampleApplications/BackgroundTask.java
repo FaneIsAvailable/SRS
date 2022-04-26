@@ -306,11 +306,11 @@ class BackgroundTask implements Runnable {
 		{
 			boolean tempBool=getTheJoints(MatlabToolboxServer.daCommand);
 			// MatlabToolboxServer.printMessage(MatlabToolboxServer.daCommand);
-			MatlabToolboxServer.svr.sendEEFforcesToClient();
 			if(tempBool==false)
 			{
 			MatlabToolboxServer.directSmart_ServoMotionFlag=false;
 			}
+			MatlabToolboxServer.svr.sendEEFforcesToClient();
 			MatlabToolboxServer.daCommand="";
 		}
 		else if(MatlabToolboxServer.daCommand.startsWith("DcSeCarJP_"))
