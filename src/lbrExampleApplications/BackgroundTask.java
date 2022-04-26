@@ -304,7 +304,7 @@ class BackgroundTask implements Runnable {
 		}
 		else if(MatlabToolboxServer.daCommand.startsWith("DcSeCarEEfP_"))
 		{
-			boolean tempBool=getThePositions(MatlabToolboxServer.daCommand);
+			boolean tempBool=getTheJoints(MatlabToolboxServer.daCommand);
 			// MatlabToolboxServer.printMessage(MatlabToolboxServer.daCommand);
 			MatlabToolboxServer.svr.sendEEFforcesToClient();
 			if(tempBool==false)
