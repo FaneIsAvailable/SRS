@@ -812,6 +812,7 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
 
         DirectServo aDirectServoMotion = new DirectServo(
                 _lbr.getCurrentJointPosition());
+        
 
         aDirectServoMotion.setJointVelocityRel(0.2);
         aDirectServoMotion.setMinimumTrajectoryExecutionTime(40e-3);
