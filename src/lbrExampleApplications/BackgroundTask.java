@@ -310,7 +310,8 @@ class BackgroundTask implements Runnable {
 			{
 			MatlabToolboxServer.directSmart_ServoMotionFlag=false;
 			}
-			MatlabToolboxServer.svr.sendEEFforcesToClient();
+			//MatlabToolboxServer.svr.sendEEFforcesToClient();
+			MatlabToolboxServer.svr.sendEEfPositionToClient();
 			MatlabToolboxServer.daCommand="";
 		}
 		else if(MatlabToolboxServer.daCommand.startsWith("DcSeCarJP_"))
