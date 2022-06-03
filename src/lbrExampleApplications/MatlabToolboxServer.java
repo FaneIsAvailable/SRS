@@ -814,7 +814,7 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
                 _lbr.getCurrentJointPosition());
         
 
-        aDirectServoMotion.setJointVelocityRel(0.2);
+        aDirectServoMotion.setJointVelocityRel(0.1);
         aDirectServoMotion.setMinimumTrajectoryExecutionTime(40e-3);
 
         getLogger().info("Starting DirectServo motion in position control mode");
