@@ -76,8 +76,6 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
     public static double EEfServoPos[];
     public static double jvel[];
     public static double jvelOld[];
-    
-    public static IDirectServoRuntime theDirectServoRuntime;
     //---------------------------------------------------
     int _port;
     //private static final String stopCharacter="\n"+Character.toString((char)(10));
@@ -880,9 +878,8 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
                     getLogger().info("Measured cartesian pose from runtime "
 	                            + msrPose);
                 }
-                
-
-	                theDirectServoRuntime.setDestination(destFrame);
+ 
+	            theDirectServoRuntime.setDestination(destFrame);
                 
             }
         }
