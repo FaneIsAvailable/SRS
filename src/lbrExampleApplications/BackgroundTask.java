@@ -311,7 +311,9 @@ class BackgroundTask implements Runnable {
 			MatlabToolboxServer.directSmart_ServoMotionFlag=false;
 			}
 			//MatlabToolboxServer.svr.sendEEFforcesToClient();
-			MatlabToolboxServer.svr.sendEEfPositionToClient();
+			if(MatlabToolboxServer.theDirectServoRuntime.isDestinationReached()){
+				MatlabToolboxServer.svr.sendEEfPositionToClient();
+			}
 			//MatlabToolboxServer.svr.sendJointsPositionsToClient();
 			MatlabToolboxServer.daCommand="";
 		}
