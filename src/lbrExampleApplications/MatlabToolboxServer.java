@@ -182,7 +182,7 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
     		{
     			////////////////////////////////
     			// Attach default tool equal to flange
-    			double[] tempx1={0,0,0,0,0,0};
+    			double[] tempx1={-352.4,-6.5,110.8,0,0,0};
     			attachTheToolToFlange("defaultToolEqualFlange",tempx1);
     			///////////////////////////////////////////////
 	
@@ -587,7 +587,7 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
 		// TODO Apêndice de método gerado automaticamente
 		String TOOL_FRAME = string;
 		double[] TRANSFORM_OF_TOOL = x; 
-		double[] CENTER_OF_MASS_IN_MILLIMETER = { 0, 0, 0 }; 
+		double[] CENTER_OF_MASS_IN_MILLIMETER = { -86.68, 30.83, 5.53 }; 
 		LoadData _loadData = new LoadData();
 		double MASS=0;
 		_loadData.setMass(MASS);
