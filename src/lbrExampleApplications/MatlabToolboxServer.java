@@ -44,6 +44,9 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
 {
     private LBR _lbr; 
 	private Controller kuka_Sunrise_Cabinet_1;
+	
+	private Tool DaNeedle;
+	private ObjectFrame DaTCP;
 	// Frame of the EEF
 	/////////////////////////////////////
 	// Tool Data
@@ -125,7 +128,9 @@ public class MatlabToolboxServer extends RoboticsAPIApplication
 		svr=new StateVariablesOfRobot( _lbr, dabak);
 		ptpm=new PTPmotionClass(_lbr,dabak,kuka_Sunrise_Cabinet_1);
 			
-		
+		DaNeedle=getApplicationData().createFromTemplate("DaNeedle");
+		DaTCP=DaNeedle.getFrame("DaTCP");
+		DaNeedle.attachTo(_lbr.getFlange());
 		
     }
 
