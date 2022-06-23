@@ -819,14 +819,14 @@
         <toolTemplate class="" name="DaNeedle">
             <frames>
                 <frame id="_a93b5a7a-d98b-4a07-ba44-e10362037615" name="DaTCP">
-                    <transformation a="0.0" b="0.0" c="0.0" x="-352.42856317729706" y="-6.458621134088098" z="110.75132491086882"/>
-                    <measurementTranslation calculationError="2.0580625841039506" method="XYZ4Point" timestamp="1655219194922"/>
+                    <transformation a="0.0" b="0.0" c="0.0" x="352.2948362534102" y="3.2050362376110146" z="103.67659638331595"/>
+                    <measurementTranslation calculationError="1.6695717975563056" method="XYZ4Point" timestamp="1655990899675"/>
                 </frame>
             </frames>
             <additionalInformation>
                 <info key="ID" type="java.lang.String" value="02078d23-a0ca-4b5b-9e39-4496c081c09b"/>
             </additionalInformation>
-            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="-86.68375001702489" cogY="30.82890823642021" cogZ="5.5342400299734775" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="1.3497022745659997"/>
+            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="20.737166188769248" cogY="-17.590223085616596" cogZ="60.11782675094111" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="1.2178317795858682"/>
         </toolTemplate>
         <toolTemplate class="" name="acuHEAL">
             <frames>
