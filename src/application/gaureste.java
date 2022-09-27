@@ -38,18 +38,24 @@ public class gaureste extends RoboticsAPIApplication {
 		// your application execution starts here
 		lBR_iiwa_7_R800_1.move(ptpHome());
 		lBR_iiwa_7_R800_1.move(ptp(getApplicationData().getFrame("/Deasupra_ficat")));
-		lBR_iiwa_7_R800_1.move(linRel(0,0,50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,50,50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,0,-50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,0,-50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,10,0,0,0,0));
-		lBR_iiwa_7_R800_1.move(linRel(0,0,50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,50,50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,0,-50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,0,-50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,10,0,0,0,0));
-		lBR_iiwa_7_R800_1.move(linRel(0,0,50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,50,50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,0,-50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,0,-50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,10,0,0,0,0));
-		lBR_iiwa_7_R800_1.move(linRel(0,0,50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,50,50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,0,-50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,0,-50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,10,0,0,0,0));
-		lBR_iiwa_7_R800_1.move(linRel(0,0,50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,50,50,0,0));
 		lBR_iiwa_7_R800_1.move(linRel(0,0,-50,0,0,0));
+		lBR_iiwa_7_R800_1.move(linRel(0,0,0,-50,0,0));
+		
 }}
