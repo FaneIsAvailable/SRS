@@ -526,6 +526,18 @@
                 </redundancy>
             </redundancyData>
         </frame>
+        <frame id="_7ef06349-6263-4db0-ac1a-b966be8c6b1f" name="Deasupra_ficat">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1664262610075"/>
+            </additionalInformation>
+        </frame>
+        <frame id="_e6211922-0ef1-421c-afd1-563d0e0122b9" name="Pinsertie1">
+            <transformation a="0.0" b="0.0" c="0.0" x="0.0" y="0.0" z="0.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1664262650021"/>
+            </additionalInformation>
+        </frame>
         <frame id="_9db56bd2-c878-4201-94dc-ff1ad115f007" name="P1004">
             <transformation a="0.12078241986659777" b="-0.05136323646346887" c="4.6483445296699834E-4" x="113.69060241077136" y="49.86988665237894" z="9.582211827492984"/>
             <additionalInformation>
