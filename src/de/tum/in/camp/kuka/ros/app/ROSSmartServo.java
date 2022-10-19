@@ -74,7 +74,7 @@ public class ROSSmartServo extends ROSBaseApplication {
   private iiwaSubscriber subscriber;
   // Configuration of the subscriber ROS node.
   private NodeConfiguration subscriberNodeConfiguration;
-
+  
   private Motions motions;
   private String robotBaseFrameID = "";
   private static final String robotBaseFrameIDSuffix = "_link_0";
@@ -94,7 +94,7 @@ public class ROSSmartServo extends ROSBaseApplication {
   @Override
   protected void addNodesToExecutor(NodeMainExecutor nodeMainExecutor) {
     subscriber = new iiwaSubscriber(robot, configuration.getRobotName(), configuration.getTimeProvider(),
-        configuration.getEnforceMessageSequence());
+        configuration.getEnforceMessageSequence(), robotiqGripper);
 
     // Configure the callback for the SmartServo service inside the subscriber
     // class.
@@ -386,7 +386,7 @@ public class ROSSmartServo extends ROSBaseApplication {
 
   @Override
   protected void beforeControlLoop() {
-    motions = new Motions(robot, robotBaseFrameID, motion, endpointFrame, publisher, actionServer);
+    motions = new Motions(robot, robotBaseFrameID, motion, endpointFrame, publisher, actionServer, robotiqGripper);
     subscriber.resetSequenceIds();
   }
 
@@ -442,7 +442,9 @@ public class ROSSmartServo extends ROSBaseApplication {
         // This was the velocity commands will only run for 1 control period.
         CommandType copy = subscriber.currentCommandType;
         subscriber.currentCommandType = null;
-
+        
+        moveGripper(subscriber.getGripperFinger());
+        
         switch (copy) {
           case SMART_SERVO_CARTESIAN_POSE: {
             moveToCartesianPose(subscriber.getCartesianPose(), null);
@@ -646,6 +648,9 @@ public class ROSSmartServo extends ROSBaseApplication {
     motion.getRuntime().activateVelocityPlanning(true);
     motion.setSpeedTimeoutAfterGoalReach(0.1);
     motions.jointVelocityMotion(motion, commandVelocity);
+  }
+  protected void moveGripper(geometry_msgs.TwistStamped command){
+	  motions.gripperPosition(command);
   }
 
   protected void moveByCartesianVelocity(geometry_msgs.TwistStamped commandVelocity) {

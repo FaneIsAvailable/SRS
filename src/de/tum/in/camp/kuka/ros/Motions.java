@@ -34,6 +34,8 @@ import iiwa_msgs.RedundancyInformation;
 import iiwa_msgs.SplineSegment;
 import geometry_msgs.PoseStamped;
 
+import application.Robo_3f;
+
 import com.kuka.connectivity.motionModel.smartServo.SmartServo;
 import com.kuka.connectivity.motionModel.smartServoLIN.SmartServoLIN;
 import com.kuka.roboticsAPI.deviceModel.JointPosition;
@@ -57,6 +59,7 @@ import static com.kuka.roboticsAPI.motionModel.BasicMotions.spl;
 public class Motions {
   private LBR robot;
   private String robotBaseFrameId;
+  private Robo_3f gripper;
 
   protected JointPosition maxJointLimits;
   protected JointPosition minJointLimits;
@@ -74,12 +77,13 @@ public class Motions {
   private double loopPeriod = 0.0; // Loop period in s.
   private final double softJointLimit = 0.0174533; // in radians.
 
-  public Motions(LBR robot, String robotBaseFrameId, SmartServo motion, ObjectFrame endPointFrame, iiwaPublisher publisher, iiwaActionServer actionServer) {
+  public Motions(LBR robot, String robotBaseFrameId, SmartServo motion, ObjectFrame endPointFrame, iiwaPublisher publisher, iiwaActionServer actionServer, Robo_3f gripper) {
     this.robot = robot;
     this.robotBaseFrameId = robotBaseFrameId;
     this.endPointFrame = endPointFrame;
     this.actionServer = actionServer;
     this.publisher = publisher;
+    this.gripper = gripper;
 
     jp = new JointPosition(robot.getJointCount());
     jv = new JointPosition(robot.getJointCount());
@@ -112,7 +116,20 @@ public class Motions {
       }
     }
   }
-
+  
+  public void gripperPosition(geometry_msgs.TwistStamped command){
+	  if (command != null){
+		  
+		  gripper.setSpeed_A((int)command.getTwist().getAngular().getX());
+		  gripper.setSpeed_B((int)command.getTwist().getAngular().getY());
+		  gripper.setSpeed_C((int)command.getTwist().getAngular().getZ());
+		  
+		  gripper.setPos_req_A((int)command.getTwist().getLinear().getX());
+		  gripper.setPos_req_B((int)command.getTwist().getLinear().getY());
+		  gripper.setPos_req_C((int)command.getTwist().getLinear().getZ());
+	  }
+  }
+  
   public void cartesianPositionLinMotion(SmartServoLIN linearMotion, PoseStamped commandPosition, RedundancyInformation redundancy) {
     if (commandPosition != null) {
       Frame destinationFrame = Conversions.rosPoseToKukaFrame(robot.getRootFrame(), commandPosition.getPose());

@@ -92,7 +92,7 @@ public abstract class ROSBaseApplication extends RoboticsAPIApplication {
 	
   @Inject
   private Controller controller; 
-  private Robo_3f robotiqGripper ; 
+  protected Robo_3f robotiqGripper ; 
   
   private int positionRequestEcho = 4; 
   private int positionRequest = 4;  
@@ -180,7 +180,7 @@ public abstract class ROSBaseApplication extends RoboticsAPIApplication {
   public void initialize() {
 		// initialize your task here
 	  
-		
+	    
 		controller = (Controller) getContext().getControllers().toArray()[0]; 
 		robotiqGripper = new Robo_3f(controller);   
 		step =  getApplicationData().getProcessData("gripperStep").getValue();  

@@ -52,6 +52,8 @@ import org.ros.rosjava.tf.Transform;
 import org.ros.rosjava.tf.pubsub.TransformListener;
 import org.ros.time.TimeProvider;
 
+import application.Robo_3f;
+
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy;
 import com.kuka.roboticsAPI.geometricModel.AbstractFrame;
@@ -145,7 +147,7 @@ public class iiwaSubscriber extends AbstractNodeMain {
   private String iiwaName = "iiwa";
   private LBR robot = null;
   private Boolean enforceMessageSequence = false;
-
+  private Robo_3f grippper;
   /**
    * Constructs a series of ROS subscribers for messages defined by the iiwa_msgs ROS package.
    * <p>
@@ -156,8 +158,8 @@ public class iiwaSubscriber extends AbstractNodeMain {
    * @param robotName: name of the robot, it will be used for the topic names with this format : <robot
    *          name>/command/<iiwa message type>
    */
-  public iiwaSubscriber(LBR robot, String robotName, TimeProvider timeProvider, Boolean enforceMessageSequence) {
-    this(robot, robot.getFlange(), robotName, timeProvider, enforceMessageSequence);
+  public iiwaSubscriber(LBR robot, String robotName, TimeProvider timeProvider, Boolean enforceMessageSequence, Robo_3f gripper) {
+    this(robot, robot.getFlange(), robotName, timeProvider, enforceMessageSequence, gripper);
   }
 
   /**
@@ -172,11 +174,12 @@ public class iiwaSubscriber extends AbstractNodeMain {
    * @param robotName : name of the robot, it will be used for the topic names with this format : <robot
    *          name>/command/<iiwa message type>
    */
-  public iiwaSubscriber(LBR robot, ObjectFrame frame, String robotName, TimeProvider timeProvider, Boolean enforceMessageSequence) {
+  public iiwaSubscriber(LBR robot, ObjectFrame frame, String robotName, TimeProvider timeProvider, Boolean enforceMessageSequence, Robo_3f gripper) {
     iiwaName = robotName;
     this.robot = robot;
     this.enforceMessageSequence = enforceMessageSequence;
     helper = new MessageGenerator(iiwaName, timeProvider);
+    this.grippper=gripper;
 
     cp = helper.buildMessage(geometry_msgs.PoseStamped._TYPE);
     cp_lin = helper.buildMessage(geometry_msgs.PoseStamped._TYPE);
