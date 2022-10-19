@@ -1,8 +1,8 @@
 /**
  * Copyright (C) 2016 Salvatore Virga - salvo.virga@tum.de, Marco Esposito - marco.esposito@tum.de
- * Technische Universität München
+ * Technische Universitï¿½t Mï¿½nchen
  * Chair for Computer Aided Medical Procedures and Augmented Reality
- * Fakultät für Informatik / I16, Boltzmannstraße 3, 85748 Garching bei München, Germany
+ * Fakultï¿½t fï¿½r Informatik / I16, Boltzmannstraï¿½e 3, 85748 Garching bei Mï¿½nchen, Germany
  * http://campar.in.tum.de
  * All rights reserved.
  * 
@@ -32,6 +32,8 @@ import iiwa_msgs.RedundancyInformation;
 import geometry_msgs.Point;
 import geometry_msgs.PoseStamped;
 import geometry_msgs.Quaternion;
+import geometry_msgs.Vector3;
+import geometry_msgs.TwistStamped;
 
 import javax.vecmath.Matrix3d;
 import javax.vecmath.Matrix4d;
@@ -111,6 +113,7 @@ public class iiwaSubscriber extends AbstractNodeMain {
   private Subscriber<iiwa_msgs.JointPosition> jointPositionSubscriber;
   private Subscriber<iiwa_msgs.JointPositionVelocity> jointPositionVelocitySubscriber;
   private Subscriber<iiwa_msgs.JointVelocity> jointVelocitySubscriber;
+  private Subscriber<geometry_msgs.TwistStamped> gripperFingerSubscriber;
 
   private TransformListener tfListener;
 
@@ -124,11 +127,13 @@ public class iiwaSubscriber extends AbstractNodeMain {
   private iiwa_msgs.JointPosition jp;
   private iiwa_msgs.JointPositionVelocity jpv;
   private iiwa_msgs.JointVelocity jv;
-
+  private geometry_msgs.TwistStamped gripperFinger;
+  // ce pula mea is astea de jos in mortii mnamii ei da treaba
   private Boolean new_jp = new Boolean("false");
   private Boolean new_cp = new Boolean("false");
   private Boolean new_cp_lin = new Boolean("false");
   private Boolean new_jpv = new Boolean("false");
+  private Boolean new_gripperFinger = new Boolean("false");
 
   // Current control strategy
   public CommandType currentCommandType = null;
@@ -179,6 +184,7 @@ public class iiwaSubscriber extends AbstractNodeMain {
     jp = helper.buildMessage(iiwa_msgs.JointPosition._TYPE);
     jpv = helper.buildMessage(iiwa_msgs.JointPositionVelocity._TYPE);
     jv = helper.buildMessage(iiwa_msgs.JointVelocity._TYPE);
+    gripperFinger = helper.buildMessage(geometry_msgs.TwistStamped._TYPE);
   }
 
   /**
@@ -191,6 +197,7 @@ public class iiwaSubscriber extends AbstractNodeMain {
     jp.getHeader().setSeq(0);
     jpv.getHeader().setSeq(0);
     jv.getHeader().setSeq(0);
+    gripperFinger.getHeader().setSeq(0);
   }
 
   /**
@@ -339,6 +346,18 @@ public class iiwaSubscriber extends AbstractNodeMain {
     }
   }
 
+  public geometry_msgs.TwistStamped getGripperFinger(){
+    synchronized (new_gripperFinger){
+      if(new_gripperFinger){
+        new_gripperFinger = false;
+        return gripperFinger;
+      }
+      else{
+        return null;
+      }
+    }
+  }
+
   /**
    * Transforms a pose to the given TF reference frame.
    * 
@@ -387,6 +406,8 @@ public class iiwaSubscriber extends AbstractNodeMain {
 
     return result;
   }
+
+
 
   /**
    * Creates a KUKA Sunrise frame from a CartesianPose message. Includes resolving TF transformation and
@@ -467,6 +488,7 @@ public class iiwaSubscriber extends AbstractNodeMain {
     jointPositionSubscriber = connectedNode.newSubscriber(iiwaName + "/command/JointPosition", iiwa_msgs.JointPosition._TYPE, hint);
     jointPositionVelocitySubscriber = connectedNode.newSubscriber(iiwaName + "/command/JointPositionVelocity", iiwa_msgs.JointPositionVelocity._TYPE, hint);
     jointVelocitySubscriber = connectedNode.newSubscriber(iiwaName + "/command/JointVelocity", iiwa_msgs.JointVelocity._TYPE, hint);
+    gripperFingerSubscriber = connectedNode.newSubscriber(iiwaName + "/command/FingerPositionAndSpeed", geometry_msgs.TwistStamped._TYPE, hint);
     tfListener = new TransformListener(connectedNode);
 
     // Subscribers' callbacks
@@ -565,6 +587,23 @@ public class iiwaSubscriber extends AbstractNodeMain {
         }
         jv = velocity;
         currentCommandType = CommandType.SMART_SERVO_JOINT_VELOCITY;
+      }
+    });
+
+    gripperFingerSubscriber.addMessageListener(new MessageListener<geometry_msgs.TwistStamped>(){
+
+      @Override
+      public void onNewMessage(geometry_msgs.TwistStamped twist){
+        if(enforceMessageSequence){
+          if(!checkMessageSequence(twist.getHeader(),gripperFinger.getHeader())){
+            Logger.error("Received a gripper Fingering message with the SeqNum " + twist.getHeader().getSeq() + " while expecting a SeqNum larger than " + gripperFinger.getHeader().getSeq());
+            return;
+          }
+        }
+        synchronized(new_gripperFinger){
+        	gripperFinger = twist;
+        	new_gripperFinger = true;
+        }
       }
     });
 

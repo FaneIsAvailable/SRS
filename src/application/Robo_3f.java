@@ -59,5 +59,5 @@ public class Robo_3f extends Robotiq3FIOGroup {
 		this.setPos_req_B(0);
 		this.setPos_req_C(0);
 	}
-
+	
 }

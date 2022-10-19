@@ -1,8 +1,8 @@
 /**
  * Copyright (C) 2016 Salvatore Virga - salvo.virga@tum.de, Marco Esposito - marco.esposito@tum.de
- * Technische Universität München
+ * Technische Universitï¿½t Mï¿½nchen
  * Chair for Computer Aided Medical Procedures and Augmented Reality
- * Fakultät für Informatik / I16, Boltzmannstraße 3, 85748 Garching bei München, Germany
+ * Fakultï¿½t fï¿½r Informatik / I16, Boltzmannstraï¿½e 3, 85748 Garching bei Mï¿½nchen, Germany
  * http://campar.in.tum.de
  * All rights reserved.
  * 
@@ -32,8 +32,11 @@ import org.ros.node.AbstractNodeMain;
 import org.ros.node.ConnectedNode;
 import org.ros.node.topic.Publisher;
 import org.ros.time.TimeProvider;
+import geometry_msgs.TwistStamped;
 
 // import com.kuka.generated.ioAccess.MediaFlangeIOGroup; // MEDIAFLANGEIO
+import application.Robo_3f;
+
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 
@@ -61,12 +64,15 @@ public class iiwaPublisher extends AbstractNodeMain {
   private boolean publishJointState = false;
   // DestinationReachedFlag publisher
   private Publisher<std_msgs.Time> destinationReachedPublisher;
+  private Publisher<geometry_msgs.TwistStamped> robotiqFingerPublisher;
   // Publishes the status of the Media Flange button.
   // private Publisher<std_msgs.Bool> mediaFlangeButtonPublisher; // MEDIAFLANGEIO
   // Name to use to build the name of the ROS topics
   private String robotName = "iiwa";
 
   private LBR robot;
+  
+  private Robo_3f gripper;
 
   // Object to easily build iiwa_msgs from the current robot state
   private MessageGenerator helper;
@@ -83,6 +89,7 @@ public class iiwaPublisher extends AbstractNodeMain {
   private sensor_msgs.JointState js;
   private iiwa_msgs.JointVelocity jv;
   private std_msgs.Time t;
+  private geometry_msgs.TwistStamped robotiqFinger;
 
   // private std_msgs.Bool flangeButton; // MEDIAFLANGEIO
 
@@ -93,10 +100,11 @@ public class iiwaPublisher extends AbstractNodeMain {
    * @param robotName : name of the robot, topics will be created accordingly : <robot name>/state/<iiwa_msgs
    *          type> (e.g. MyIIWA/state/CartesianPosition)
    */
-  public iiwaPublisher(LBR robot, String robotName, TimeProvider timeProvider) {
+  public iiwaPublisher(LBR robot, String robotName, TimeProvider timeProvider, Robo_3f gripper) {
     this.robot = robot;
     this.robotName = robotName;
     helper = new MessageGenerator(robotName, timeProvider);
+    this.gripper = gripper;
 
     cp = helper.buildMessage(iiwa_msgs.CartesianPose._TYPE);
     cw = helper.buildMessage(iiwa_msgs.CartesianWrench._TYPE);
@@ -107,6 +115,7 @@ public class iiwaPublisher extends AbstractNodeMain {
     jv = helper.buildMessage(iiwa_msgs.JointVelocity._TYPE);
     js = helper.buildMessage(sensor_msgs.JointState._TYPE);
     t = helper.buildMessage(std_msgs.Time._TYPE);
+    robotiqFinger = helper.buildMessage(geometry_msgs.TwistStamped._TYPE);
     // flangeButton = helper.buildMessage(std_msgs.Bool._TYPE); // MEDIAFLANGEIO
   }
 
@@ -164,6 +173,7 @@ public class iiwaPublisher extends AbstractNodeMain {
     jointStatesPublisher = connectedNode.newPublisher(robotName + "/joint_states", sensor_msgs.JointState._TYPE);
 
     destinationReachedPublisher = connectedNode.newPublisher(robotName + "/state/DestinationReached", std_msgs.Time._TYPE);
+    robotiqFingerPublisher = connectedNode.newPublisher(robotName + "/state/finger", geometry_msgs.TwistStamped._TYPE);
 
     // mediaFlangeButtonPublisher = connectedNode.newPublisher(robotName + "/state/MFButtonState",
     // std_msgs.Bool._TYPE); // MEDIAFLANGEIO
@@ -236,6 +246,11 @@ public class iiwaPublisher extends AbstractNodeMain {
       jointStatesPublisher.publish(js);
     }
 
+    if (robotiqFingerPublisher.getNumberOfSubscribers() > 0) {
+      helper.getCurrentGripperPosition(robotiqFinger, gripper);
+      helper.incrementSeqNumber(robotiqFinger.getHeader());
+      robotiqFingerPublisher.publish(robotiqFinger);
+    }
     // Uncomment if using a Media Flange IO. // MEDIAFLANGEIO
     // if (mediaFlange != null && mediaFlangeButtonPublisher.getNumberOfSubscribers() > 0) {
     // flangeButton.setData(mediaFlange.getUserButton());

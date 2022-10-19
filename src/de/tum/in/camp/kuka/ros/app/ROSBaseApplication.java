@@ -1,8 +1,8 @@
 /**
  * Copyright (C) 2016 Salvatore Virga - salvo.virga@tum.de, Marco Esposito - marco.esposito@tum.de
- * Technische Universität München
+ * Technische Universitï¿½t Mï¿½nchen
  * Chair for Computer Aided Medical Procedures and Augmented Reality
- * Fakultät für Informatik / I16, Boltzmannstraße 3, 85748 Garching bei München, Germany
+ * Fakultï¿½t fï¿½r Informatik / I16, Boltzmannstraï¿½e 3, 85748 Garching bei Mï¿½nchen, Germany
  * http://campar.in.tum.de
  * All rights reserved.
  * 
@@ -27,6 +27,9 @@
 
 package de.tum.in.camp.kuka.ros.app;
 
+import application.Robo_3f;
+
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 // import javax.inject.Inject;
 
 import org.ros.address.BindAddress;
@@ -49,6 +53,8 @@ import com.kuka.connectivity.motionModel.smartServoLIN.SmartServoLIN;
 // import com.kuka.generated.ioAccess.MediaFlangeIOGroup; // MEDIAFLANGEIO
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplication;
 import com.kuka.roboticsAPI.applicationModel.RoboticsAPIApplicationState;
+import com.kuka.roboticsAPI.applicationModel.tasks.CycleBehavior;
+import com.kuka.roboticsAPI.controllerModel.Controller;
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.geometricModel.ObjectFrame;
 import com.kuka.roboticsAPI.geometricModel.Tool;
@@ -82,7 +88,21 @@ import de.tum.in.camp.kuka.ros.Logger;
  * configuration, and publishing the current state of the robot.
  */
 public abstract class ROSBaseApplication extends RoboticsAPIApplication {
-
+	
+	
+  @Inject
+  private Controller controller; 
+  private Robo_3f robotiqGripper ; 
+  
+  private int positionRequestEcho = 4; 
+  private int positionRequest = 4;  
+  private int step = 10;
+  private int speed = 128;
+  private int force = 35; 
+  private  static final int maxVal = 227;
+  private  static final int minVal = 4;
+	
+	
   protected LBR robot = null;
   protected Tool tool = null;
   protected String toolFrameID = "";
@@ -94,7 +114,7 @@ public abstract class ROSBaseApplication extends RoboticsAPIApplication {
   protected Lock controlModeLock = new ReentrantLock();
   protected CommandType lastCommandType = CommandType.SMART_SERVO_JOINT_POSITION;
   protected GoalReachedEventListener handler = null;
-
+  
   // Tool frame.
   protected ObjectFrame toolFrame = null;
   // Active frame for sending and receiving Cartesian positions.
@@ -158,12 +178,23 @@ public abstract class ROSBaseApplication extends RoboticsAPIApplication {
 
   @PostConstruct
   public void initialize() {
+		// initialize your task here
+	  
+		
+		controller = (Controller) getContext().getControllers().toArray()[0]; 
+		robotiqGripper = new Robo_3f(controller);   
+		step =  getApplicationData().getProcessData("gripperStep").getValue();  
+		speed = getApplicationData().getProcessData("gripperSpeed").getValue();  
+		force = getApplicationData().getProcessData("gripperForce").getValue();   
+		positionRequest = robotiqGripper.getPos_scissor();
+		positionRequestEcho = positionRequest;  
+	
     // Get the robot instance.
     robot = getContext().getDeviceFromType(LBR.class);
 
     // Standard configuration.
     configuration = new Configuration(getApplicationData());
-    publisher = new iiwaPublisher(robot, configuration.getRobotName(), configuration.getTimeProvider());
+    publisher = new iiwaPublisher(robot, configuration.getRobotName(), configuration.getTimeProvider(), robotiqGripper);
     actionServer = new iiwaActionServer(robot, configuration);
 
     // Get the Sunrise Logger and set its log level.

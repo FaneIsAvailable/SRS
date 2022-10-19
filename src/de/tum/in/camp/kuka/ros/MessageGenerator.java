@@ -39,6 +39,8 @@ import org.ros.message.MessageFactory;
 import org.ros.node.NodeConfiguration;
 import org.ros.time.TimeProvider;
 
+import application.Robo_3f;
+
 import com.kuka.connectivity.motionModel.smartServo.SmartServo;
 import com.kuka.roboticsAPI.deviceModel.LBR;
 import com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy;
@@ -53,6 +55,10 @@ import com.kuka.roboticsAPI.sensorModel.ForceSensorData;
  * the current state of a LBR iiwa Robot. For Cartesian messages, it's possible to pass a reference frames, if
  * no reference frames is passed, the flange frame is used.
  */
+
+
+///Declare PUBLISHER FUNCTIONS HERe
+
 public class MessageGenerator {
 
   private static String baseFrameID;
@@ -77,7 +83,18 @@ public class MessageGenerator {
         robotName + "_joint_7" };
     time = timeProvider;
   }
-
+  
+  public void getCurrentGripperPosition(geometry_msgs.TwistStamped twist, Robo_3f gripper){
+	
+	  twist.getTwist().getLinear().setX(gripper.getPos_A());
+	  twist.getTwist().getLinear().setY(gripper.getPos_B());
+	  twist.getTwist().getLinear().setZ(gripper.getPos_C());
+	  
+	  twist.getTwist().getAngular().setX(gripper.getSpeed_A());
+	  twist.getTwist().getAngular().setY(gripper.getSpeed_B());
+	  twist.getTwist().getAngular().setZ(gripper.getSpeed_C());
+	  
+  }
   /**
    * Builds a geometry_msgs.PoseStamped message given a LBR iiwa Robot.
    * <p>
