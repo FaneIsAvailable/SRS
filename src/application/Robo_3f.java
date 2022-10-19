@@ -36,6 +36,16 @@ public class Robo_3f extends Robotiq3FIOGroup {
 		System.out.println("Activating Gripper..."); 
 		this.setAct_req(9);//"ActionRequest" byte <-- ‭‭0000 0001 : rACT bit = 1‬
 	}
+	
+	public void setIndividual(){
+		this.setGripper_opt(4);//<-- 0000 0100
+	}
+	
+	public void setIndividualScissor(){
+		this.setGripper_opt(8);//-<< 0000 1000
+	}
+	
+	
 	//************************************************** 
 	public void close_full(){
 		

@@ -397,6 +397,7 @@ public class ROSSmartServo extends ROSBaseApplication {
    */
   private void moveRobot() {
     try {
+      moveGripper(subscriber.getGripperFinger());
       if (actionServer.newGoalAvailable()) {
         while (actionServer.newGoalAvailable()) {
           actionServer.markCurrentGoalFailed("Received new goal. Dropping old task.");
@@ -443,7 +444,7 @@ public class ROSSmartServo extends ROSBaseApplication {
         CommandType copy = subscriber.currentCommandType;
         subscriber.currentCommandType = null;
         
-        moveGripper(subscriber.getGripperFinger());
+        
         
         switch (copy) {
           case SMART_SERVO_CARTESIAN_POSE: {

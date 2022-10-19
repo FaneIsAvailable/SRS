@@ -120,6 +120,8 @@ public class Motions {
   public void gripperPosition(geometry_msgs.TwistStamped command){
 	  if (command != null){
 		  
+		  gripper.setIndividual();
+		  
 		  gripper.setSpeed_A((int)command.getTwist().getAngular().getX());
 		  gripper.setSpeed_B((int)command.getTwist().getAngular().getY());
 		  gripper.setSpeed_C((int)command.getTwist().getAngular().getZ());
