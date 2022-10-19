@@ -27,14 +27,38 @@ public class Robo_3f extends Robotiq3FIOGroup {
 		this.activate() ;
 		
 	}
-	
+	/*  0000 0000
+	 * 1st bit  = activate - 1 / deactivate - 0 
+	 * 2nd bit and 3rd = gripper gasping mode:
+	 * 				   = 0 - basic mode
+	 *  			   = 1 - pinch mode
+	 * 				   = 2 - wide mode
+	 *      		   = 3 - scissor mode
+	 * 4th bit = go to action - 1 go to pos/ - 0 stop
+	 * 5th bit = emergency release - 1/ normal - 0
+	 * bits 6,7,8 - reserved (000)
+	*/
 	public void deactivate() {
-		this.setAct_req(0); //"ActionRequest" byte <-- ‭0000 0000: rACT bit =  0
+		this.setAct_req(0); //<-- 0000 0000
 	} 
-	//************************************************** 
 	public void activate() {
 		System.out.println("Activating Gripper..."); 
-		this.setAct_req(9);//"ActionRequest" byte <-- ‭‭0000 0001 : rACT bit = 1‬
+		this.setAct_req(9);//<-- 0000 1001 
+	}
+	public void setBasicMode(){
+		this.setAct_req(9);//<-- 0000 1001
+	}
+	public void setPinchMode(){
+		this.setAct_req(11);//<-- 0000 1011
+	}
+	public void setWideMode(){
+		this.setAct_req(13);//<-- 0000 1101
+	}
+	public void setScissorMode(){
+		this.setAct_req(15);//<-- 0000 1111
+	}
+	public void emergencyStop(){
+		this.setAct_req(25);//<-- 0001 1001
 	}
 	
 	public void setIndividual(){
@@ -44,6 +68,8 @@ public class Robo_3f extends Robotiq3FIOGroup {
 	public void setIndividualScissor(){
 		this.setGripper_opt(8);//-<< 0000 1000
 	}
+
+
 	
 	
 	//************************************************** 
